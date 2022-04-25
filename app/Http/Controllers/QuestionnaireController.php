@@ -26,7 +26,7 @@ class QuestionnaireController extends Controller
      */
     public function create()
     {
-        //
+        return view('questionnaireform');
     }
 
     /**
@@ -37,7 +37,11 @@ class QuestionnaireController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $questionnaire = new Questionnaire;
+        $questionnaire->name = $request->name;
+        $questionnaire->description = $request->description;
+        $questionnaire->save();
+        return redirect('questionnaires');
     }
 
     /**
@@ -48,7 +52,10 @@ class QuestionnaireController extends Controller
      */
     public function show($id)
     {
-        //
+        $questionnaire = Questionnaire::find($id);
+        return view('questionnaire', [
+            'questionnaire' => $questionnaire,
+        ]);
     }
 
     /**

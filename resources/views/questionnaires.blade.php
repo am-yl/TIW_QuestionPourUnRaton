@@ -9,20 +9,23 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
+                    <a href="{{ route('questionnaires.new') }}">Créer un nouveau questionnaire</a>
                     <table>
                         <thead>
                             <tr>
-                                <td class="p-2 mb-2">#</td>
-                                <td class="p-2 mb-2">Intitulé du questionnaire</td>
-                                <td class="p-2 mb-2">Description</td>
+                                <th class="p-2 mb-2 text-center">#</th>
+                                <th class="p-2 mb-2">Intitulé du questionnaire</th>
+                                <th class="p-2 mb-2">Description</th>
+                                <th class="p-2 mb-2">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($questionnaires as $questionnaire)
                             <tr>
-                                <td class="p-2 mb-2">{{ $questionnaire->id }}</td>
+                                <td class="p-2 mb-2 text-center">{{ $questionnaire->id }}</td>
                                 <td class="p-2 mb-2">{{ $questionnaire->name }}</td>
                                 <td class="p-2 mb-2">{{ $questionnaire->description }}</td>
+                                <td class="p-2 mb-2"><a href="{{ route('questionnaires.show',$questionnaire->id) }}">Voir</a> ; <a href="#">Supprimer</a></td>
                             </tr>
                             @endforeach
                         </tbody>
