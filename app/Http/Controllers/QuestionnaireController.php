@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Questionnaire;
+use App\Models\Question;
 use Illuminate\Http\Request;
 
 class QuestionnaireController extends Controller
@@ -53,6 +54,7 @@ class QuestionnaireController extends Controller
     public function show($id)
     {
         $questionnaire = Questionnaire::find($id);
+
         return view('questionnaire', [
             'questionnaire' => $questionnaire,
         ]);

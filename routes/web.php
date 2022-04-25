@@ -41,4 +41,22 @@ Route::prefix('/questionnaires')->middleware(['auth'])->controller(Questionnaire
 
 });
 
+Route::prefix('/questions')->middleware(['auth'])->controller(QuestionnaireController::class)->name('questions.')->group(function () {
+
+    Route::get('', 'index')->name('index');
+
+    Route::get('/new', 'create')->name('new');
+
+    Route::post('/store', 'store')->name('store');
+
+    Route::get('/{id}', 'show')->name('show');
+
+    Route::get('{id}/edit/', 'edit')->name('edit');
+
+    Route::put('{id}/update', 'update')->name('update');
+
+    Route::get('/{id}/delete', 'destroy')->name('delete');
+
+});
+
 require __DIR__.'/auth.php';

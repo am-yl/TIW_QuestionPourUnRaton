@@ -16,6 +16,8 @@
                                 <th class="p-2 mb-2 text-center">#</th>
                                 <th class="p-2 mb-2">Intitulé du questionnaire</th>
                                 <th class="p-2 mb-2">Description</th>
+                                <th class="p-2 mb-2">Nombre de questions</th>
+                                <th class="p-2 mb-2">Groupe(s) assigné(s)</th>
                                 <th class="p-2 mb-2">Actions</th>
                             </tr>
                         </thead>
@@ -25,6 +27,12 @@
                                 <td class="p-2 mb-2 text-center">{{ $questionnaire->id }}</td>
                                 <td class="p-2 mb-2">{{ $questionnaire->name }}</td>
                                 <td class="p-2 mb-2">{{ $questionnaire->description }}</td>
+                                <td class="p-2 mb-2">{{ count($questionnaire->questions) }}</td>
+                                <td class="p-2 mb-2">
+                                    @foreach ($questionnaire->groupes as $q_groupe)
+                                    {{ $q_groupe->name }} ;
+                                    @endforeach
+                                </td>
                                 <td class="p-2 mb-2"><a href="{{ route('questionnaires.show',$questionnaire->id) }}">Voir</a> ; <a href="{{route('questionnaires.delete',$questionnaire->id)}}">Supprimer</a></td>
                             </tr>
                             @endforeach
