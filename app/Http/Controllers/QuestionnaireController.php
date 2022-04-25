@@ -66,7 +66,14 @@ class QuestionnaireController extends Controller
      */
     public function edit($id)
     {
-        //
+        $questionnaire = Questionnaire::find($id);
+        if(isset($questionnaire)) {
+            return view('questionnaireform', [
+                'questionnaire' => $questionnaire,
+            ]);
+        } else {
+            return view('questionnaires');
+        }
     }
 
     /**
@@ -78,7 +85,12 @@ class QuestionnaireController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $questionnaire = Questionnaire::find($id);
+        $questionnaire->name = $request->name;
+        $questionnaire->description = $request->description;
+        $questionnaire->save();
+
+        return redirect('questionnaires');
     }
 
     /**
@@ -89,6 +101,10 @@ class QuestionnaireController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $questionnaire = Questionnaire::find($id);
+        if(isset($questionnaire)) {
+            $questionnaire->delete();
+        }
+        return redirect('questionnaires');
     }
 }

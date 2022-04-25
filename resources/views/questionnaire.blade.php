@@ -11,6 +11,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <a href="{{ route('questionnaires.index') }}">&larr; Retour à la liste des questionnaires</a>
                     <p class="p-2 mb-2 text-center">{{ $questionnaire->id }} ; {{ $questionnaire->name }} ; {{ $questionnaire->description }}</p>
+                    <a href="{{ route('questionnaires.edit', $questionnaire->id)}}">Modifier</a>
                 </div>
             </div>
         </div>

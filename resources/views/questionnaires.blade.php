@@ -25,7 +25,7 @@
                                 <td class="p-2 mb-2 text-center">{{ $questionnaire->id }}</td>
                                 <td class="p-2 mb-2">{{ $questionnaire->name }}</td>
                                 <td class="p-2 mb-2">{{ $questionnaire->description }}</td>
-                                <td class="p-2 mb-2"><a href="{{ route('questionnaires.show',$questionnaire->id) }}">Voir</a> ; <a href="#">Supprimer</a></td>
+                                <td class="p-2 mb-2"><a href="{{ route('questionnaires.show',$questionnaire->id) }}">Voir</a> ; <a href="{{route('questionnaires.delete',$questionnaire->id)}}">Supprimer</a></td>
                             </tr>
                             @endforeach
                         </tbody>
