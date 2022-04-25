@@ -16,7 +16,7 @@ class QuestionnaireController extends Controller
         $questionnaires = Questionnaire::All();
         return view('questionnaires', [
             'questionnaires' => $questionnaires,
-        ])
+        ]);
     }
 
     /**
