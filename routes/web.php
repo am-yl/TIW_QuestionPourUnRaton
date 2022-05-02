@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionnaireController;
+use App\Http\Controllers\QuestionController;
 
 
 /*
@@ -41,7 +42,7 @@ Route::prefix('/questionnaires')->middleware(['auth'])->controller(Questionnaire
 
 });
 
-Route::prefix('/questions')->middleware(['auth'])->controller(QuestionnaireController::class)->name('questions.')->group(function () {
+Route::prefix('/questions')->middleware(['auth'])->controller(QuestionController::class)->name('questions.')->group(function () {
 
     Route::get('', 'index')->name('index');
 
@@ -55,7 +56,7 @@ Route::prefix('/questions')->middleware(['auth'])->controller(QuestionnaireContr
 
     Route::put('{id}/update', 'update')->name('update');
 
-    Route::get('/{id}/delete', 'destroy')->name('delete');
+    Route::get('/{q_id}/delete/{id}', 'destroy')->name('delete');
 
 });
 

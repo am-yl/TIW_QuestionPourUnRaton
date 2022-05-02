@@ -14,6 +14,33 @@
                     <p class="mb-2">{{ $questionnaire->description }}</p>
                     <a href="{{ route('questionnaires.edit', $questionnaire->id)}}"  class="mb-2">Modifier le questionnaire</a>
                     <hr class="mb-2">
+
+                    <!-- formulaire pour add une question dans le questionnaire -->
+                    <form action="{{ route('questions.store') }}" method="post">
+                        @csrf
+
+                        <label for="name">Intitulé</label>
+                        <input type="text" name="name" id="name" required>
+
+                        <label for="rep[]">Réponses</label>
+                        <label for="val[]">(cocher la/les bonne(s) réponse(s))</label>
+                        <input type="text" name="rep[]" id="" required>
+                        <input type="checkbox" name="val[]" id="">
+                        <input type="text" name="rep[]" id="" required>
+                        <input type="checkbox" name="val[]" id="">
+                        <input type="text" name="rep[]" id="">
+                        <input type="checkbox" name="val[]" id="">
+                        <input type="text" name="rep[]" id="">
+                        <input type="checkbox" name="val[]" id="">
+
+                        <input type="hidden" name="questionnaire_id" value="{{ $questionnaire->id }}">
+
+                        <button type="submit">Ajouter la question</button>
+                    </form>
+
+
+                    <!-- on affiche les questions & réponses que si il y en a -->
+                    @if(count($questionnaire->questions) > 0)
                     <table>
                         <thead>
                             <th>Intitulé</th>
@@ -25,27 +52,28 @@
                             @foreach($questionnaire->questions as $q_question)
                             <tr>
                                 <td class="p-2 mb-2">{{$q_question->name}}</td>
+                                <?php
+                                // on récupère le tableau des réponses
+                                $reps = json_decode($q_question->reponses,true);
+                                // $reps = ["bonne réponse" => true , "mauvaise réponse" => false];?>
                                 <td class="p-2 mb-2">
-
-                                    <?php
-                                    // on récupère le tableau des réponses
-                                    $reps = json_decode($q_question->reponses,true)['answers'];
-                                    // on récupère le tableau des bonnes réponses
-                                    $corrA = json_decode($q_question->reponses,true)['correctAnswers']; ?>
-                                    @foreach ($reps as $rep)
-                                    {{ $rep }} ;
-                                    @endforeach
+                                @foreach ($reps as $keys => $values)
+                                    {{ $keys }} ;
+                                @endforeach
                                 </td>
                                 <td class="p-2 mb-2">
-                                    @foreach( $corrA as $cor)
-                                    {{$reps[$cor]}}
-                                    @endforeach
+                                @foreach ($reps as $keys => $values)
+                                    @if($values)
+                                    {{ $keys }}
+                                    @endif
+                                @endforeach
                                 </td>
-                                <td class="p-2 mb-2"><a href="{{ route('questions.edit',$q_question->id) }}">Modifier</a> ; <a href="{{route('questions.delete',$q_question->id)}}">Supprimer</a></td>
+                                <td class="p-2 mb-2"><a href="{{ route('questions.edit', $q_question->id) }}">Modifier</a> ; <a href="{{route('questions.delete',$q_question->questionnaire-id, $q_question->id)}}">Supprimer</a></td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    @endif
                 </div>
             </div>
         </div>
