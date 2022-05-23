@@ -25,13 +25,13 @@
                         <tbody>
                             @foreach($groupes as $groupe)
                                 <tr>
-                                    <td class="p-2 mb-2 text-center">{{$groupe->id}}</td>
-                                    <td class="p-2 mb-2">{{$groupe->name}}</td>
-                                    <td class="p-2 mb-2">{{$groupe->description}}</td>
+                                    <td class="p-2 mb-2 text-center">{{ $groupe->id }}</td>
+                                    <td class="p-2 mb-2">{{ $groupe->name }}</td>
+                                    <td class="p-2 mb-2">{{ $groupe->description }}</td>
                                     <td class="p-2 mb-2"></td>
                                     <td class="p-2 mb-2"></td>
                                     <td class="p-2 mb-2"></td>
-                                    <td class="p-2 mb-2"><a href="#">Modifier</a> ; <a href="#">Supprimer</a></td>
+                                    <td class="p-2 mb-2"><a href="{{ route('groupes.edit', $groupe->id) }}">Modifier</a> ; <a href="{{ route('groupes.delete', $groupe->id) }}">Supprimer</a></td>
                                 </tr>
                             @endforeach
                         </tbody>

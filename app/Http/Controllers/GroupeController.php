@@ -64,7 +64,14 @@ class GroupeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $groupe = Groupe::find($id);
+        if(isset($groupe)) {
+            return view('groupeform', [
+                'groupe' => $groupe,
+            ]);
+        } else {
+            return view('groupes');
+        }
     }
 
     /**
@@ -76,7 +83,13 @@ class GroupeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $groupe = Groupe::find($id);
+        $groupe->name = $request->name;
+        $groupe->description = $request->description;
+        $groupe->save();
+
+        return redirect('groupes');
+
     }
 
     /**
@@ -87,6 +100,10 @@ class GroupeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $groupe = Groupe::find($id);
+        if(isset($groupe)) {
+            $groupe->delete();
+        }
+        return redirect('groupes');
     }
 }

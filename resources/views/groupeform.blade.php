@@ -10,13 +10,27 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <a href="{{ route('groupes.index') }}">&larr; Retour à la liste des groupes</a>
+                    @if(isset($groupe))
+                    <form action="{{ route('groupes.update', $groupe->id) }}" method="post">
+                    @method('put')
+                    @else
                     <form action="{{ route('groupes.store') }}" method="post">
+                    @endif
                     @csrf
+
+                    @if(isset($groupe))
+                        <label for="name">Nom du groupe</label>
+                        <input type="text" id="name" name="name" value="{{ $groupe->name }}">
+                        <label for="description">Description du groupe</label>
+                        <input type="text" id="description" name="description" value="{{ $groupe->description }}">
+                        <button type="submit">Modifier le groupe</button>
+                    @else
                         <label for="name">Nom du groupe</label>
                         <input type="text" id="name" name="name">
                         <label for="description">Description du groupe</label>
                         <input type="text" id="description" name="description">
                         <button type="submit">Ajouter le groupe</button>
+                    @endif
                     </form>
                 </div>
             </div>
