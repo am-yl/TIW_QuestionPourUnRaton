@@ -33,7 +33,7 @@
                                     {{ $q_groupe->name }} ;
                                     @endforeach
                                 </td>
-                                <td class="p-2 mb-2"><a href="{{ route('questionnaires.show',$questionnaire->id) }}">Voir</a> ; <a href="{{route('questionnaires.delete',$questionnaire->id)}}">Supprimer</a></td>
+                                <td class="p-2 mb-2"><a href="{{ route('questionnaires.show',[$questionnaire->id,0]) }}">Voir</a> ; <a href="{{route('questionnaires.delete',$questionnaire->id)}}">Supprimer</a></td>
                             </tr>
                             @endforeach
                         </tbody>

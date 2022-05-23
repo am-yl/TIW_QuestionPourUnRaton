@@ -32,6 +32,8 @@ Route::prefix('/questionnaires')->middleware(['auth'])->controller(Questionnaire
 
     Route::post('/store', 'store')->name('store');
 
+    Route::get('/{id}/showedit/{question_id}', 'show')->name('showedit');
+
     Route::get('/{id}', 'show')->name('show');
 
     Route::get('{id}/edit/', 'edit')->name('edit');
@@ -52,7 +54,7 @@ Route::prefix('/questions')->middleware(['auth'])->controller(QuestionController
 
     Route::get('/{id}', 'show')->name('show');
 
-    Route::get('{id}/edit/', 'edit')->name('edit');
+    Route::get('{q_id}/edit/{id}', 'edit')->name('edit');
 
     Route::put('{id}/update', 'update')->name('update');
 

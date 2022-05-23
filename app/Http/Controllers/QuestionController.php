@@ -92,7 +92,28 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $question = Question::find($id);
+        if($question->questionnaire_id == $request->questionnaire_id) {
+            $bonneRep = 0;
+            $nbRep = 0;
+            foreach($request->rep as $key => $rep) {
+                if($rep != "") {
+                    if(isset($request->val[$key])) {
+                        $reps[$rep] = true;
+                        $bonneRep++;
+                    } else {
+                        $reps[$rep] = false;
+                    }
+                    $nbRep++;
+                }
+            }
+            if ($bonneRep > 0 && $nbRep > 1) {
+                $question->reponses = json_encode($reps);
+                $question->save();
+            }
+        }
+        return redirect()
+            ->action([QuestionnaireController::class, 'show'], ['id' => $question->questionnaire_id]);
     }
 
     /**

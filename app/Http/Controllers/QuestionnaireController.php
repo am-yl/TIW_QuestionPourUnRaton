@@ -51,10 +51,16 @@ class QuestionnaireController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $question_id = 0)
     {
         $questionnaire = Questionnaire::find($id);
-
+        $question = Question::find($question_id);
+        if (isset($question)) {
+            return view('questionnaire', [
+                'questionnaire' => $questionnaire,
+                'question' => $question,
+            ]);
+        }
         return view('questionnaire', [
             'questionnaire' => $questionnaire,
         ]);
