@@ -38,7 +38,11 @@ class GroupeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $groupe = new Groupe;
+        $groupe->name = $request->name;
+        $groupe->description = $request->description;
+        $groupe->save();
+        return redirect('groupes');
     }
 
     /**

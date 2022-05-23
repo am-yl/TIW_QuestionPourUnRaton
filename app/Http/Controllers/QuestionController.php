@@ -18,7 +18,6 @@ class QuestionController extends Controller
     {
         $question = new Question;
 
-
         $question->name = $request->name;
         $question->questionnaire_id = $request->questionnaire_id;
 

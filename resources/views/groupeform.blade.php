@@ -10,6 +10,14 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <a href="{{ route('groupes.index') }}">&larr; Retour à la liste des groupes</a>
+                    <form action="{{ route('groupes.store') }}" method="post">
+                    @csrf
+                        <label for="name">Nom du groupe</label>
+                        <input type="text" id="name" name="name">
+                        <label for="description">Description du groupe</label>
+                        <input type="text" id="description" name="description">
+                        <button type="submit">Ajouter le groupe</button>
+                    </form>
                 </div>
             </div>
         </div>
