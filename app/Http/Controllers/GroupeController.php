@@ -27,7 +27,7 @@ class GroupeController extends Controller
      */
     public function create()
     {
-        //
+        return view('groupeform');
     }
 
     /**
