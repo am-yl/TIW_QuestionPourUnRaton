@@ -103,6 +103,14 @@ class QuestionController extends Controller
      */
     public function destroy($q_id, $id)
     {
-
+        $question = Question::find($id);
+        $questionnaire = Questionnaire::find($q_id);
+        if(isset($question)) {
+            if($question->questionnaire_id == $q_id) {
+                $question->delete();
+            }
+        }
+        return redirect()
+            ->action([QuestionnaireController::class, 'show'], ['id' => $q_id]);
     }
 }

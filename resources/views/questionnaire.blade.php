@@ -61,14 +61,14 @@
                                     {{ $keys }} ;
                                 @endforeach
                                 </td>
-                                <td class="p-2 mb-2">
+                                <td class="p-2 mb-3">
                                 @foreach ($reps as $keys => $values)
                                     @if($values)
                                     {{ $keys }}
                                     @endif
                                 @endforeach
                                 </td>
-                                <td class="p-2 mb-2"><a href="{{ route('questions.edit', $q_question->id) }}">Modifier</a> ; <a href="{{route('questions.delete',$q_question->questionnaire-id, $q_question->id)}}">Supprimer</a></td>
+                                <td class="p-2 mb-2"><a href="{{ route('questions.edit', $q_question->id) }}">Modifier</a> ; <a href="{{route('questions.delete',[$q_question->questionnaire_id, $q_question->id])}}">Supprimer</a></td>
                             </tr>
                             @endforeach
                         </tbody>
