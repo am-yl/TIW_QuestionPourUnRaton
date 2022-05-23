@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionnaireController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\GroupeController;
 
 
 /*
@@ -46,6 +47,16 @@ Route::prefix('/questionnaires')->middleware(['auth'])->controller(Questionnaire
 
 Route::prefix('/questions')->middleware(['auth'])->controller(QuestionController::class)->name('questions.')->group(function () {
 
+    Route::post('/store', 'store')->name('store');
+
+    Route::put('{id}/update', 'update')->name('update');
+
+    Route::get('/{q_id}/delete/{id}', 'destroy')->name('delete');
+
+});
+
+Route::prefix('/groupes')->middleware(['auth'])->controller(GroupeController::class)->name('groupes.')->group(function () {
+
     Route::get('', 'index')->name('index');
 
     Route::get('/new', 'create')->name('new');
@@ -54,11 +65,11 @@ Route::prefix('/questions')->middleware(['auth'])->controller(QuestionController
 
     Route::get('/{id}', 'show')->name('show');
 
-    Route::get('{q_id}/edit/{id}', 'edit')->name('edit');
+    Route::get('{id}/edit/', 'edit')->name('edit');
 
     Route::put('{id}/update', 'update')->name('update');
 
-    Route::get('/{q_id}/delete/{id}', 'destroy')->name('delete');
+    Route::get('/{id}/delete', 'destroy')->name('delete');
 
 });
 
