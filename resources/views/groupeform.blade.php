@@ -18,19 +18,23 @@
                     @endif
                     @csrf
 
+                    <label for="name">Nom du groupe</label>
                     @if(isset($groupe))
-                        <label for="name">Nom du groupe</label>
                         <input type="text" id="name" name="name" value="{{ $groupe->name }}">
                         <label for="description">Description du groupe</label>
                         <input type="text" id="description" name="description" value="{{ $groupe->description }}">
-                        <button type="submit">Modifier le groupe</button>
                     @else
-                        <label for="name">Nom du groupe</label>
                         <input type="text" id="name" name="name">
                         <label for="description">Description du groupe</label>
                         <input type="text" id="description" name="description">
-                        <button type="submit">Ajouter le groupe</button>
-                    @endif
+                        @endif
+                        <label for="questionnaire_id">Sélectionnez les questionnaires</label>
+                        <select name="questionnaire_id" id="" multiple>
+                            @foreach($questionnaires as $questionnaire)
+                            <option value="{{ $questionnaire->id }}">{{ $questionnaire->name }}</option>
+                            @endforeach
+                        </select>
+                    <button type="submit">Enregistrer</button>
                     </form>
                 </div>
             </div>

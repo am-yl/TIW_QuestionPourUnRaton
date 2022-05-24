@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Questionnaire;
 use App\Models\Question;
+use App\Models\Groupe;
 use Illuminate\Http\Request;
 
 class QuestionnaireController extends Controller
@@ -27,7 +28,10 @@ class QuestionnaireController extends Controller
      */
     public function create()
     {
-        return view('questionnaireform');
+        $groupes = Groupe::All();
+        return view('questionnaireform', [
+            'groupes' => $groupes,
+        ]);
     }
 
     /**
@@ -75,9 +79,11 @@ class QuestionnaireController extends Controller
     public function edit($id)
     {
         $questionnaire = Questionnaire::find($id);
+        $groupes = Groupe::All();
         if(isset($questionnaire)) {
             return view('questionnaireform', [
                 'questionnaire' => $questionnaire,
+                'groupes' => $groupes,
             ]);
         } else {
             return view('questionnaires');

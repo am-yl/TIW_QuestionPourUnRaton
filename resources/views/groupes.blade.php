@@ -17,7 +17,6 @@
                                 <th class="p-2 mb-2">Intitulé du questionnaire</th>
                                 <th class="p-2 mb-2">Description</th>
                                 <th class="p-2 mb-2">Professeur</th>
-                                <th class="p-2 mb-2">Nombre d'élèves</th>
                                 <th class="p-2 mb-2">Nombre de questionnaires</th>
                                 <th class="p-2 mb-2">Actions</th>
                             </tr>
@@ -29,8 +28,7 @@
                                     <td class="p-2 mb-2">{{ $groupe->name }}</td>
                                     <td class="p-2 mb-2">{{ $groupe->description }}</td>
                                     <td class="p-2 mb-2"></td>
-                                    <td class="p-2 mb-2"></td>
-                                    <td class="p-2 mb-2"></td>
+                                    <td class="p-2 mb-2">{{ count($groupe->questionnaires) }}</td>
                                     <td class="p-2 mb-2"><a href="{{ route('groupes.edit', $groupe->id) }}">Modifier</a> ; <a href="{{ route('groupes.delete', $groupe->id) }}">Supprimer</a></td>
                                 </tr>
                             @endforeach

@@ -31,6 +31,12 @@
                             <label for="description">Description du questionnaire</label>
                             <input type="text" name="description" id="description" placeholder="La description">
                         @endif
+                        <label for="groupe_id">Choisissez les groupes</label>
+                        <select name="groupe_id" id="" multiple>
+                            @foreach($groupes as $groupe)
+                            <option value="{{ $groupe->id }}">{{ $groupe->name }}</option>
+                            @endforeach
+                        </select>
                         <button type="submit">Enregistrer</button>
                     </form>
                 </div>
