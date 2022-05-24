@@ -29,7 +29,7 @@
                         <input type="text" id="description" name="description">
                         @endif
                         <label for="questionnaire_id">Sélectionnez les questionnaires</label>
-                        <select name="questionnaire_id" id="" multiple>
+                        <select name="questionnaire_id[]" id="questionnaire_id[]" multiple>
                             @foreach($questionnaires as $questionnaire)
                             <option value="{{ $questionnaire->id }}">{{ $questionnaire->name }}</option>
                             @endforeach
