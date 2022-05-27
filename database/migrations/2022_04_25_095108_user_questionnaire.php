@@ -15,9 +15,9 @@ class UserQuestionnaire extends Migration
     {
         Schema::create('user_questionnaire', function(Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
-            $table->integer('questionnaire_id');
-            $table->integer('resultat');
+            $table->integer('user_id')->onDelete('cascade');
+            $table->integer('questionnaire_id')->onDelete('cascade');
+            $table->integer('resultat')->nullable();
             $table->timestamps();
         });
     }
