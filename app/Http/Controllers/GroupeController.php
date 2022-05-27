@@ -47,9 +47,11 @@ class GroupeController extends Controller
         $groupe->description = $request->description;
         $groupe->save();
 
-        foreach($request->questionnaire_id as $q_id) {
-            $questionnaire = Questionnaire::find($q_id);
-            $groupe->questionnaires()->save($questionnaire);
+        if(isset($request->questionnaire_id)) {
+            foreach($request->questionnaire_id as $q_id) {
+                $questionnaire = Questionnaire::find($q_id);
+                $groupe->questionnaires()->save($questionnaire);
+            }
         }
 
         return redirect('groupes');
@@ -100,16 +102,16 @@ class GroupeController extends Controller
         $groupe->description = $request->description;
         $groupe->save();
 
-        foreach($request->questionnaire_id as $q_id) {
-            $questionnaire = Questionnaire::find($q_id);
-            // var_dump($groupe->questionnaires($questionnaire));
-            if($groupe->questionnaires($questionnaire) == null) {
-                $groupe->questionnaires()->save($questionnaire);
+        if(isset($request->questionnaire_id)) {
+            foreach($request->questionnaire_id as $questionnaire_id) {
+                $set = $groupe->questionnaires()->where('questionnaire_id', $questionnaire_id)->get();
+                if(count($set) == 0) {
+                    $questionnaire = Questionnaire::find($questionnaire_id);
+                    $groupe->questionnaires()->save($questionnaire);
+                }
             }
         }
-
         return redirect('groupes');
-
     }
 
     /**
