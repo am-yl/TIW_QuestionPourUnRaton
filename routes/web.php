@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionnaireController;
+use App\Http\Controllers\QuestionController;
 
 
 /*
@@ -41,7 +42,7 @@ Route::prefix('/questionnaires')->middleware(['auth'])->controller(Questionnaire
 
 });
 
-Route::prefix('/questions')->middleware(['auth'])->controller(QuestionnaireController::class)->name('questions.')->group(function () {
+Route::prefix('/questions')->middleware(['auth'])->controller(QuestionController::class)->name('questions.')->group(function () {
 
     Route::get('', 'index')->name('index');
 
