@@ -48,8 +48,8 @@ class GroupeController extends Controller
         $groupe->save();
 
         if(isset($request->questionnaire_id)) {
-            foreach($request->questionnaire_id as $q_id) {
-                $questionnaire = Questionnaire::find($q_id);
+            foreach($request->questionnaire_id as $questionnaire_id) {
+                $questionnaire = Questionnaire::find($questionnaire_id);
                 $groupe->questionnaires()->save($questionnaire);
             }
         }
