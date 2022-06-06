@@ -15,30 +15,11 @@ class UserController extends Controller
     public function index()
     {
         $users = User::All();
+        $types = ['Nouvel utilisateur', 'Elève', 'Professeur', 'Administrateur'];
         return view('users', [
             'users' => $users,
+            'types' => $types,
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -60,7 +41,18 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        $types = ['Nouvel utilisateur', 'Elève', 'Professeur', 'Administrateur'];
+        $groupes = Groupe::All();
+        if(isset($user)) {
+            return view('userform', [
+                'user' => $user,
+                'types' => $types,
+                'groupes' => $groupes,
+            ]);
+        } else {
+            return view('users');
+        }
     }
 
     /**
@@ -72,7 +64,17 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        $user->name = $request->name;
+        $user->surname = $request->surname;
+        $user->email = $request->email;
+        $user->type = $request->type;
+        $user->groupe_id = $request->groupe_id;
+
+        $user->save();
+
+        return redirect('users');
     }
 
     /**
