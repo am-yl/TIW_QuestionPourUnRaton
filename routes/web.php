@@ -78,8 +78,6 @@ Route::prefix('/users')->middleware(['auth'])->controller(UserController::class)
 
     Route::get('', 'index')->name('index');
 
-    Route::get('/{id}', 'show')->name('show');
-
     Route::get('{id}/edit/', 'edit')->name('edit');
 
     Route::put('{id}/update', 'update')->name('update');

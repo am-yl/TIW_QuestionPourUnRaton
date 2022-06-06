@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Groupe;
+use App\Models\Questionnaire;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -20,17 +21,6 @@ class UserController extends Controller
             'users' => $users,
             'types' => $types,
         ]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -85,6 +75,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        if(isset($user)) {
+            $user->questionnaires()->detach();
+            $user->delete();
+        }
+        return redirect('users');
     }
 }
