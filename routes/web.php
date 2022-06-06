@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionnaireController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\GroupeController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -56,6 +57,24 @@ Route::prefix('/questions')->middleware(['auth'])->controller(QuestionController
 });
 
 Route::prefix('/groupes')->middleware(['auth'])->controller(GroupeController::class)->name('groupes.')->group(function () {
+
+    Route::get('', 'index')->name('index');
+
+    Route::get('/new', 'create')->name('new');
+
+    Route::post('/store', 'store')->name('store');
+
+    Route::get('/{id}', 'show')->name('show');
+
+    Route::get('{id}/edit/', 'edit')->name('edit');
+
+    Route::put('{id}/update', 'update')->name('update');
+
+    Route::get('/{id}/delete', 'destroy')->name('delete');
+
+});
+
+Route::prefix('/users')->middleware(['auth'])->controller(UserController::class)->name('users.')->group(function () {
 
     Route::get('', 'index')->name('index');
 
