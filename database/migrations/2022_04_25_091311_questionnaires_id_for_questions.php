@@ -14,7 +14,7 @@ class QuestionnairesIdForQuestions extends Migration
     public function up()
     {
         Schema::table('questions', function(Blueprint $table) {
-            $table->foreignId('questionnaire_id')->constrained();
+            $table->foreignId('questionnaire_id')->constrained()->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class QuestionnairesIdForQuestions extends Migration
     public function down()
     {
         Schema::table('questions', function(Blueprint $table) {
-            $table->dropForeign('questionnaire_id');
+            $table->dropForeign('questions_questionnaire_id_foreign');
             $table->dropColumn('questionnaire_id');
         });
     }
