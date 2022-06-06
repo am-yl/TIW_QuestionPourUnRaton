@@ -15,8 +15,9 @@
                             <tr>
                                 <th class="p-2 mb-2 text-center">#</th>
                                 <th class="p-2 mb-2">Prénom</th>
-                                <th class="p-2 mb-2">Type</th>
+                                <th class="p-2 mb-2">Nom</th>
                                 <th class="p-2 mb-2">Email</th>
+                                <th class="p-2 mb-2">Type</th>
                                 <th class="p-2 mb-2">Groupe</th>
                                 <th class="p-2 mb-2">Nombre de questionnaires</th>
                                 <th class="p-2 mb-2">Actions</th>
@@ -28,9 +29,10 @@
                                 <tr>
                                     <td class="p-2 mb-2 text-center">{{ $user->id }}</td>
                                     <td class="p-2 mb-2">{{ $user->name }}</td>
-                                    <td class="p-2 mb-2">{{ $user->type }}</td>
+                                    <td class="p-2 mb-2">{{ $user->surname }}</td>
                                     <td class="p-2 mb-2">{{ $user->email }}</td>
-                                    <td class="p-2 mb-2">{{ $user->groupe }}</td>
+                                    <td class="p-2 mb-2">{{ $user->type }}</td>
+                                    <td class="p-2 mb-2">{{ $user->groupe->name }}</td>
                                     <td class="p-2 mb-2">@if(isset($user->questionnaire)) {{ count($user->questionnaire) }} @else Pas de questionnaire @endif</td>
                                     <td class="p-2 mb-2"><a href="{{ route('users.edit', $user->id) }}">Modifier</a> ; <a href="{{ route('users.delete', $user->id) }}">Supprimer</a></td>
                                 </tr>
