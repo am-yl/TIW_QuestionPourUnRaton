@@ -47,7 +47,7 @@
 <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
   <div class="max-w-md w-full space-y-8">
     <div>
-      <img class="logo" src="{{URL::asset('/img/logo.png')}}" alt="logo">
+    <img class="logo" src="{{URL::asset('/img/raccoon.png')}}" alt="logo">
       <h1 class="mt-6 text-center text-3xl font-extrabold">QUESTIONS POUR UN RATON</h1>
     </div>
 
