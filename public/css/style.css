@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    background: url("/img/background.jpg");
+}
+
+h1 {
+    font-family: 'Bebas Neue', cursive; ;
+}
+
+input {
+    font-family: 'Roboto Condensed', sans-serif;
+}
