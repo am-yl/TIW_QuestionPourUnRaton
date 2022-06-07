@@ -136,6 +136,7 @@ class QuestionnaireController extends Controller
         $questionnaire = Questionnaire::find($id);
         if(isset($questionnaire)) {
             $questionnaire->groupes()->detach();
+            $questionnaire->users()->detach();
             $questionnaire->delete();
         }
         return redirect('questionnaires');
