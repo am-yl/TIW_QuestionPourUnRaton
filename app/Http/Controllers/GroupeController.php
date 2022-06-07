@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Models\Groupe;
+use App\Models\User;
 use App\Models\Questionnaire;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GroupeController extends Controller
 {
@@ -65,7 +66,12 @@ class GroupeController extends Controller
      */
     public function show($id)
     {
-        //
+        $eleves = User::All()->where('role_id','2')->where('groupe_id', '1');
+        $groupe = Groupe::find($id);
+        return view('groupe', [
+            'groupe' => $groupe,
+            'eleves' => $eleves,
+        ]);
     }
 
     /**
@@ -84,7 +90,11 @@ class GroupeController extends Controller
                 'questionnaires' => $questionnaires,
             ]);
         } else {
-            return view('groupes');
+            $eleves = User::All()->where('role_id','2')->where('groupe_id', '1');
+            return view('groupe', [
+                'groupe' => $groupe,
+                'eleves' => $eleves,
+            ]);
         }
     }
 
@@ -111,7 +121,11 @@ class GroupeController extends Controller
                 }
             }
         }
-        return redirect('groupes');
+        $eleves = User::All()->where('role_id','2')->where('groupe_id', '1');
+        return view('groupe', [
+            'groupe' => $groupe,
+            'eleves' => $eleves,
+        ]);
     }
 
     /**

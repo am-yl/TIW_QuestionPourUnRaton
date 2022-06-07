@@ -5,6 +5,7 @@ use App\Models\Questionnaire;
 use App\Models\Question;
 use App\Models\Groupe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionnaireController extends Controller
 {

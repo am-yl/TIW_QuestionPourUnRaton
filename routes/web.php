@@ -80,6 +80,8 @@ Route::prefix('/users')->middleware(['auth'])->controller(UserController::class)
 
     Route::get('{id}/edit/', 'edit')->name('edit');
 
+    Route::put('{g_id}/ajout_groupe/', 'ajout_groupe')->name('add_group');
+
     Route::put('{id}/update', 'update')->name('update');
 
     Route::get('/{id}/delete', 'destroy')->name('delete');

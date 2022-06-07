@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     @if (isset($questionnaire))
-                        <a href="{{ route('questionnaires.edit', $questionnaire->id) }}">&larr; Retour à la liste des questionnaires</a>
+                        <a href="{{ route('questionnaires.index') }}">&larr; Retour à la liste des questionnaires</a>
                         <p>Ajout des questions uniquement dans les questionnaires</p>
                         <form action="{{ route('questionnaires.update', $questionnaire->id) }}" method="post">
                             @method('put')
@@ -31,12 +31,17 @@
                             <label for="description">Description du questionnaire</label>
                             <input type="text" name="description" id="description" placeholder="La description">
                         @endif
+                        <!-- select pour choisir les groupes du questionnaires -->
                         <label for="groupe_id">Choisissez les groupes</label>
                         <select name="groupe_id[]" id="groupe_id" multiple>
                             @foreach($groupes as $groupe)
                             <option value="{{ $groupe->id }}">{{ $groupe->name }}</option>
                             @endforeach
                         </select>
+                        <!-- on affiche chaque groupe du questionnaire -->
+                        @foreach($questionnaire->groupes as $q_groupe)
+                            <span>{{ $q_groupe->name }}</span>
+                        @endforeach
                         <button type="submit">Enregistrer</button>
                     </form>
                 </div>
