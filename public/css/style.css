@@ -9,15 +9,15 @@
 /************************************************** [ACCUEIL****/
 body {
     background: url("/img/background.jpg");
-    align-items: center;
+    background-size: cover;
 }
 
 h1 {
     font-family: 'Bebas Neue', cursive;
-    color: #6d6d6d;
-    background-color: #d0ecea;
+    color: rgba(143, 141, 141, 0.9);
+    background-color: rgba(199, 246, 250, 0.7);
     padding: 9px 11px 6px 11px;
-    border-radius: 10px;
+    border-radius: 30px;
     border: 2px solid #c7f6fa;
     font-size: 3em;
 }
@@ -28,10 +28,11 @@ img {
 }
 
 form {
-    background-color: #d0ecea;
+    background-color: rgba(199, 246, 250, 0.7);
     padding: 15px 15px;
-    border-radius: 10px;
+    border-radius: 30px;
     border: 2px solid #c7f6fa;
+    width: 550px;
 }
 
     label {
@@ -40,13 +41,20 @@ form {
         font-size: 1.7em;
         padding: 10px 10px;
     }
-
+    
     input {
         font-family: 'Roboto Condensed', sans-serif;
         font-size: 1em;
-        padding: 5px 35px;
-        color: #8f8d8d;
+        padding: 10px 8px;
         border-radius: 10px;
+        width: 100%;
+        display: block;
+        background-color: rgba(245, 246, 2246, 0.9);
+        box-shadow: 7px 7px 11px rgb(162, 166, 167);
+    }
+
+    ::placeholder {
+        color: rgba(143, 141, 141, 0.7);
     }
 
     a {
@@ -54,12 +62,20 @@ form {
         color: #6d6d6d;
     }
 
-    button {
+    .submit {
         font-family: 'Bebas Neue', cursive;
         background-color: #6d6d6d;
         color: #f5f5f5;
         padding: 6px 8px;
         border-radius: 10px;
         font-size: 1.3em;
+    }
+
+    .email {
+        padding-bottom: 20px;
+    }
+
+    .password {
+        padding-bottom: 20px;
     }
 
