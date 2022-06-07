@@ -21,10 +21,10 @@
                             <label for="email">Email</label>
                             <input type="text" name="email" id="email" value="{{ $user->email }}">
                     @endif
-                        <label for="type">Type d'utilisateur :</label>
-                        <select name="type" id="type">
-                            @foreach($types as $type => $value)
-                            <option value="{{$type}}">{{$value}}</option>
+                        <label for="role">Type d'utilisateur :</label>
+                        <select name="role" id="role">
+                            @foreach($roles as $role)
+                            <option value="{{$role->id}}">{{$role->name}}</option>
                             @endforeach
                         </select>
                         <label for="groupe_id">Choisissez les groupes</label>

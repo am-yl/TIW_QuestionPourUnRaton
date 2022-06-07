@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Groupe;
+use App\Models\Role;
 use App\Models\Questionnaire;
 use Illuminate\Http\Request;
 
@@ -16,10 +17,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::All();
-        $types = ['Nouvel utilisateur', 'Elève', 'Professeur', 'Administrateur'];
         return view('users', [
             'users' => $users,
-            'types' => $types,
         ]);
     }
 
@@ -32,12 +31,12 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $types = ['Nouvel utilisateur', 'Elève', 'Professeur', 'Administrateur'];
         $groupes = Groupe::All();
+        $roles = Role::All();
         if(isset($user)) {
             return view('userform', [
                 'user' => $user,
-                'types' => $types,
+                'roles' => $roles,
                 'groupes' => $groupes,
             ]);
         } else {
