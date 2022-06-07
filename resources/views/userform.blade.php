@@ -21,8 +21,8 @@
                             <label for="email">Email</label>
                             <input type="text" name="email" id="email" value="{{ $user->email }}">
                     @endif
-                        <label for="role">Type d'utilisateur :</label>
-                        <select name="role" id="role">
+                        <label for="role_id">Type d'utilisateur :</label>
+                        <select name="role_id" id="role_id">
                             @foreach($roles as $role)
                             <option value="{{$role->id}}">{{$role->name}}</option>
                             @endforeach
