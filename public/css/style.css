@@ -7,3 +7,11 @@
 body {
     background-image: url(public/img/backgound.jpg);
 }
+
+h1 {
+    font-family: 'Bebas Neue', cursive; ;
+}
+
+input {
+    font-family: 'Roboto Condensed', sans-serif;
+}
