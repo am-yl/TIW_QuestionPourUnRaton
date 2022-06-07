@@ -6,7 +6,7 @@
 }
 
 
-/************************************************** [ACCUEIL****/
+/************************************************** [ACCUEIL] ****/
 .background {
     position: absolute;
     height: 100vh;
@@ -75,8 +75,8 @@ form {
 
     #button-parent {
         position:absolute;
-        bottom:0;
-        right:0;
+        top:81%;
+        left:81%;
     }
 
     .submit {
@@ -86,8 +86,6 @@ form {
         padding: 6px 8px;
         border-radius: 10px;
         font-size: 1.3em;
-        top:;
-        left:;
     }
 
     .email {
