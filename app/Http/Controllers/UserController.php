@@ -6,6 +6,7 @@ use App\Models\Groupe;
 use App\Models\Role;
 use App\Models\Questionnaire;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -17,8 +18,10 @@ class UserController extends Controller
     public function index()
     {
         $users = User::All();
+        $auth = Auth::user()->role_id;
         return view('users', [
             'users' => $users,
+            'auth' => $auth,
         ]);
     }
 

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Groupe;
 use App\Models\Questionnaire;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GroupeController extends Controller
 {
