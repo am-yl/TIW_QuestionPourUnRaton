@@ -14,7 +14,7 @@ class GroupesIdForUsers extends Migration
     public function up()
     {
         Schema::table('users', function(Blueprint $table) {
-            $table->foreignId('groupe_id')->constrained();
+            $table->foreignId('groupe_id')->constrained()->default('1');
         });
     }
 
@@ -26,7 +26,7 @@ class GroupesIdForUsers extends Migration
     public function down()
     {
         Schema::table('users', function(Blueprint $table) {
-            $table->dropForeign('groupe_id');
+            $table->dropForeign('users_groupe_id_foreign');
             $table->dropColumn('groupe_id');
         });
     }

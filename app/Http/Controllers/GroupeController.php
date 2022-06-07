@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Groupe;
+use App\Models\Questionnaire;
 
 use Illuminate\Http\Request;
 
@@ -13,7 +15,10 @@ class GroupeController extends Controller
      */
     public function index()
     {
-        //
+        $groupes = Groupe::All();
+        return view('groupes', [
+            'groupes' => $groupes,
+        ]);
     }
 
     /**
@@ -23,7 +28,10 @@ class GroupeController extends Controller
      */
     public function create()
     {
-        //
+        $questionnaires = Questionnaire::All();
+        return view('groupeform', [
+            'questionnaires' => $questionnaires,
+        ]);
     }
 
     /**
@@ -34,7 +42,19 @@ class GroupeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $groupe = new Groupe;
+        $groupe->name = $request->name;
+        $groupe->description = $request->description;
+        $groupe->save();
+
+        if(isset($request->questionnaire_id)) {
+            foreach($request->questionnaire_id as $questionnaire_id) {
+                $questionnaire = Questionnaire::find($questionnaire_id);
+                $groupe->questionnaires()->attach($questionnaire);
+            }
+        }
+
+        return redirect('groupes');
     }
 
     /**
@@ -56,7 +76,16 @@ class GroupeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $groupe = Groupe::find($id);
+        $questionnaires = Questionnaire::All();
+        if(isset($groupe)) {
+            return view('groupeform', [
+                'groupe' => $groupe,
+                'questionnaires' => $questionnaires,
+            ]);
+        } else {
+            return view('groupes');
+        }
     }
 
     /**
@@ -68,7 +97,21 @@ class GroupeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $groupe = Groupe::find($id);
+        $groupe->name = $request->name;
+        $groupe->description = $request->description;
+        $groupe->save();
+
+        if(isset($request->questionnaire_id)) {
+            foreach($request->questionnaire_id as $questionnaire_id) {
+                $set = $groupe->questionnaires()->where('questionnaire_id', $questionnaire_id)->get();
+                if(count($set) == 0) {
+                    $questionnaire = Questionnaire::find($questionnaire_id);
+                    $groupe->questionnaires()->save($questionnaire);
+                }
+            }
+        }
+        return redirect('groupes');
     }
 
     /**
@@ -79,6 +122,10 @@ class GroupeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $groupe = Groupe::find($id);
+        if(isset($groupe)) {
+            $groupe->delete();
+        }
+        return redirect('groupes');
     }
 }
