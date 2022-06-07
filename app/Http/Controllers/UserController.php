@@ -61,6 +61,10 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->role_id = $request->role_id;
         $user->groupe_id = $request->groupe_id;
+        $questionnaires = $user->groupe->questionnaires;
+        foreach($questionnaires as $questionnaire) {
+            $user->questionnaires()->save($questionnaire);
+        }
 
         $user->save();
 
@@ -76,13 +80,17 @@ class UserController extends Controller
      */
 
     public function ajout_groupe(Request $request, $g_id) {
-        // if(isset($request->user_id)) {
+        if(isset($request->user_id)) {
             foreach($request->user_id as $id) {
                 $user = User::find($id);
                 $user->groupe_id = $g_id;
                 $user->save();
+                $questionnaires = $user->groupe->questionnaires;
+                foreach($questionnaires as $questionnaire) {
+                    $user->questionnaires()->save($questionnaire);
+                }
             }
-        // }
+        }
         return redirect()
             ->action([GroupeController::class, 'show'], ['id' => $g_id]);
     }
