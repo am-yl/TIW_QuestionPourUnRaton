@@ -68,7 +68,7 @@
         </div>
       </div>
 
-        <div class="text-sm">
+        <div>
           <a href="#"> Mot de passe oublié ? </a>
         </div>
 

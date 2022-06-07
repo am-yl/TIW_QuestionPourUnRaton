@@ -88,6 +88,12 @@ form {
         font-size: 1.3em;
     }
 
+    .submit:hover {
+        background-color: #1b1b1b; 
+        color: rgba(199, 246, 250);
+        transition: 0.5s;
+    }
+
     .email {
         padding-bottom: 20px;
     }
