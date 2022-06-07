@@ -24,13 +24,21 @@
                         <label for="role_id">Type d'utilisateur :</label>
                         <select name="role_id" id="role_id">
                             @foreach($roles as $role)
-                            <option value="{{$role->id}}">{{$role->name}}</option>
+                                @if($user->role_id == $role->id)
+                                <option value="{{$role->id}}" selected>{{$role->name}}</option>
+                                @else
+                                <option value="{{$role->id}}">{{$role->name}}</option>
+                                @endif
                             @endforeach
                         </select>
                         <label for="groupe_id">Choisissez les groupes</label>
                         <select name="groupe_id" id="groupe_id">
                             @foreach($groupes as $groupe)
-                            <option value="{{ $groupe->id }}">{{ $groupe->name }}</option>
+                                @if($user->groupe_id == $groupe->id)
+                                <option value="{{$groupe->id}}" selected>{{$groupe->name}}</option>
+                                @else
+                                <option value="{{ $groupe->id }}">{{ $groupe->name }}</option>
+                                @endif
                             @endforeach
                         </select>
                         <button type="submit">Enregistrer</button>

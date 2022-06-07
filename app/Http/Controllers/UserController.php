@@ -18,10 +18,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::All();
-        $auth = Auth::user()->role_id;
         return view('users', [
             'users' => $users,
-            'auth' => $auth,
         ]);
     }
 
@@ -67,6 +65,26 @@ class UserController extends Controller
         $user->save();
 
         return redirect('users');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $g_id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function ajout_groupe(Request $request, $g_id) {
+        // if(isset($request->user_id)) {
+            foreach($request->user_id as $id) {
+                $user = User::find($id);
+                $user->groupe_id = $g_id;
+                $user->save();
+            }
+        // }
+        return redirect()
+            ->action([GroupeController::class, 'show'], ['id' => $g_id]);
     }
 
     /**

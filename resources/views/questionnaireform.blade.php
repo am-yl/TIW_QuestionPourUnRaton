@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     @if (isset($questionnaire))
-                        <a href="{{ route('questionnaires.edit', $questionnaire->id) }}">&larr; Retour à la liste des questionnaires</a>
+                        <a href="{{ route('questionnaires.index') }}">&larr; Retour à la liste des questionnaires</a>
                         <p>Ajout des questions uniquement dans les questionnaires</p>
                         <form action="{{ route('questionnaires.update', $questionnaire->id) }}" method="post">
                             @method('put')
