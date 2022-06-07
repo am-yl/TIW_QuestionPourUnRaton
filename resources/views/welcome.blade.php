@@ -29,7 +29,7 @@
     <img src="{{URL::asset('/img/background.jpg')}}" alt="">
     </div>
 
-        <div>
+        <div class="login">
             @if (Route::has('login'))
                 <div>
                     @auth
@@ -71,12 +71,9 @@
         <div class="text-sm">
           <a href="#"> Mot de passe oublié ? </a>
         </div>
-      </div>
 
-      <div>
+      <div id="button-parent">
         <button type="submit" class="submit">
-          <span class="left-0 inset-y-0 flex items-center pl-3">
-          </span>
           CONNEXION
         </button>
       </div>

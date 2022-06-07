@@ -9,7 +9,13 @@
 /************************************************** [ACCUEIL****/
 .background {
     position: absolute;
-    filter: blur(3px);
+    height: 100vh;
+    overflow: hidden;   
+}
+
+.background img {
+    width: 100%;
+    filter: blur(2px);
 }
 
 h1 {
@@ -26,7 +32,9 @@ h1 {
 
 .logo {
     width: 150px;
+    margin:auto;
     position: relative;
+    display: block;
 }
 
 form {
@@ -65,6 +73,12 @@ form {
         color: #6d6d6d;
     }
 
+    #button-parent {
+        position:absolute;
+        bottom:0;
+        right:0;
+    }
+
     .submit {
         font-family: 'Bebas Neue', cursive;
         background-color: #6d6d6d;
@@ -72,7 +86,8 @@ form {
         padding: 6px 8px;
         border-radius: 10px;
         font-size: 1.3em;
-        position: relative;
+        top:;
+        left:;
     }
 
     .email {
@@ -83,5 +98,9 @@ form {
         padding-bottom: 20px;
     }
 
+
+.login {
+    position: relative;
+}
 
 
