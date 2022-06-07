@@ -29,7 +29,7 @@ img {
 
 form {
     background-color: #d0ecea;
-    padding: 10px 10px;
+    padding: 15px 15px;
     border-radius: 10px;
     border: 2px solid #c7f6fa;
 }
@@ -37,8 +37,8 @@ form {
     label {
         font-family: 'Bebas Neue', cursive;
         color: #6d6d6d;
-        font-size: 1.8em;
-        padding: 5px 5px;
+        font-size: 1.7em;
+        padding: 10px 10px;
     }
 
     input {
