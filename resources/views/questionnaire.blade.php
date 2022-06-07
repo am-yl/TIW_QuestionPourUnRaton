@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Questionnaire') }}
+            {{ $questionnaire->name }}
         </h2>
     </x-slot>
 
@@ -60,7 +60,6 @@
                         <thead>
                             <th>Intitulé</th>
                             <th>Réponses</th>
-                            <th>Bonne réponse</th>
                             <th>Actions</th>
                         </thead>
                         <tbody>

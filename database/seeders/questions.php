@@ -17,7 +17,7 @@ class questions extends Seeder
         DB::table('questions')->insert([
             [
             'name' => 'intitulé',
-            'reponses' => '{"answers": ["réponse 1","réponse 2","réponse 3"],"correctAnswers" : [0]}',
+            'reponses' => '{"rep1":true,"rep2":false,"rep3":false,"rep4":true}',
             'questionnaire_id' => 1
             ]
         ]);
