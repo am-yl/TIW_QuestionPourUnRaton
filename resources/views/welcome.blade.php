@@ -24,6 +24,7 @@
         <style>
             body {
                 font-family: 'Bebas Neue', cursive;
+                background-image: url({{asset('img/backgroundg.jpg')}});
             }
         </style>
     </head>
@@ -73,7 +74,7 @@
 <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
   <div class="max-w-md w-full space-y-8">
     <div>
-      <img class="mx-auto h-12 w-auto" src="{{ mix('public/img/logo.png') }}" alt="logo">
+      <img class="mx-auto h-12 w-auto" src="public/img/logo.png" alt="logo">
       <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">QUESTIONS POUR UN RATON</h2>
     </div>
     <form class="mt-8 space-y-6" action="#" method="POST">
