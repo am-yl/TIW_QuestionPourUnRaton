@@ -4,8 +4,9 @@
     margin: 0;
 }
 
-html {
+body {
     background: url("/img/background.jpg");
+    align-items: center;
 }
 
 h1 {
@@ -14,4 +15,8 @@ h1 {
 
 input {
     font-family: 'Roboto Condensed', sans-serif;
+}
+
+img {
+    width: 150px;
 }
