@@ -33,7 +33,7 @@
                                     <td class="p-2 mb-2">{{ $user->email }}</td>
                                     <td class="p-2 mb-2">@if(isset($user->role)) {{ $user->role->name }} @endif</td>
                                     <td class="p-2 mb-2">{{ $user->groupe->name }}</td>
-                                    <td class="p-2 mb-2">{{ count($user->questionnaires) }}</td>
+                                    <td class="p-2 mb-2">{{ count($user->questionnaires->where('resultat', '>', 0)) }}</td>
                                     <td class="p-2 mb-2"><a href="{{ route('users.edit', $user->id) }}">Modifier</a> ; <a href="{{ route('users.delete', $user->id) }}">Supprimer</a></td>
                                 </tr>
                             @endforeach

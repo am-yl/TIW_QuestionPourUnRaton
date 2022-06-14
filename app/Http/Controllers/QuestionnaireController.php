@@ -16,7 +16,20 @@ class QuestionnaireController extends Controller
      */
     public function index()
     {
-        $questionnaires = Questionnaire::All();
+        // var_dump(Auth::user()->questionnaires);
+        switch (Auth::user()->role_id) {
+            case 1 :
+                return redirect('dashboard');
+                break;
+            case 2 :
+            case 3 :
+                $questionnaires = Auth::user()->questionnaires;
+                break;
+            case 4 :
+                $questionnaires = Questionnaire::All();
+                break;
+            }
+
         return view('questionnaires', [
             'questionnaires' => $questionnaires,
         ]);

@@ -16,17 +16,24 @@ class Controller extends BaseController
 {
     public function index() {
 
-        if(Auth::user()->role_id == 4) {
-            $users = User::All();
-            $questionnaires = Questionnaire::All();
-            $groupes = Groupe::All();
+        switch (Auth::user()->role_id) {
+            case 1 :
+            case 2 :
+            case 3 :
+                return view('dashboard');
+                break;
+            case 4 :
+                $users = User::All();
+                $questionnaires = Questionnaire::All();
+                $groupes = Groupe::All();
 
-            return view('dashboard', [
-                'users' => $users,
-                'questionnaires' => $questionnaires,
-                'groupes' => $groupes,
-            ]);
-        }
+                return view('dashboard', [
+                    'users' => $users,
+                    'questionnaires' => $questionnaires,
+                    'groupes' => $groupes,
+                ]);
+                break;
+            }
     }
 
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;

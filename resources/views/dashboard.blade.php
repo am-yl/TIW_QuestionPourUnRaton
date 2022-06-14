@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <style>h3 {font-weight:bold;}.parent {display:flex; align-items:top; justify-content:space-between} .w33 {width:30%; display:inherit; align-items:center;flex-direction:column;}</style>
+    <style>h3 {font-weight:bold;} .parent {display:flex; align-items:top; justify-content:space-between} .w33 {width:30%; display:inherit; align-items:center;flex-direction:column;}</style>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -13,6 +13,7 @@
                     @if(Auth::user()->role_id == 4)
                     <div class="w33">
                         <h3>Membres</h3>
+                        <!-- pas sure des balises p -->
                         @foreach($users as $user)
                             <p>{{$user->name}} {{$user->surname}}</p>
                         @endforeach

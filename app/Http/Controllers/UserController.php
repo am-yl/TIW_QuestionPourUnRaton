@@ -62,7 +62,10 @@ class UserController extends Controller
         $user->role_id = $request->role_id;
         $user->groupe_id = $request->groupe_id;
         $questionnaires = $user->groupe->questionnaires;
+
         foreach($questionnaires as $questionnaire) {
+            // TO CHECK POUR PAS RESAVE EN BASE :) leuchtrum page 33
+            // $set = $user->questionnaires()->where('questionnaire_id', $questionnaire->id)->get();
             $user->questionnaires()->save($questionnaire);
         }
 
