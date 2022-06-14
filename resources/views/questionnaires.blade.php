@@ -29,7 +29,11 @@
     <div class="background">
     <img src="{{URL::asset('/img/background.jpg')}}" alt="">
     </div>    
-    
+
+    <div class="raccoon">
+    <img src="{{URL::asset('/img/raccoon.png')}}" alt="logo">
+    </div>
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -39,6 +43,7 @@
 
     <div class="gestion">
         <a class="creation" href="{{ route('questionnaires.new') }}">Créer un nouveau questionnaire</a>
+        <a class="groupe">Créer un groupe</a>
         <h3 class="titre">Gérer vos quizz</h3>
             <table>
                 <thead>

@@ -109,15 +109,20 @@ form {
 
 /************************************************** [GÉRER VOS QUESTIONNAIRES] ****/
 
+.raccoon {
+    width: 100px;
+    position: relative;
+    padding: 15px;
+
+}
 
 .gestion {
     background-color: rgba(199, 246, 250, 0.7);
     padding: 15px 15px;
     border-radius: 30px;
     border: 2px solid #c7f6fa;
-    width: 800px;
-    height: 400px;
-    position: relative;
+    height: 450px;
+
 }
 
 .creation {
@@ -126,9 +131,26 @@ form {
     background-color: #6d6d6d;
     padding: 5px;
     border-radius: 10px;
+    width: 208px;
+    margin-bottom: 5px;
 }
 
-.creation:hover {
+.groupe {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #fff;
+    background-color: #6d6d6d;
+    padding: 5px;
+    border-radius: 10px;
+    width: 114px;
+}
+
+.creation:hover  {
+    background-color: #1b1b1b; 
+    color: rgba(199, 246, 250);
+    transition: 0.5s;
+}
+
+.groupe:hover {
     background-color: #1b1b1b; 
     color: rgba(199, 246, 250);
     transition: 0.5s;
@@ -137,7 +159,7 @@ form {
 .titre {
     font-family: 'Roboto Condensed', sans-serif;
     color: #6d6d6d;
-    font-size: 2em;
+    font-size: 3em;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -155,7 +177,8 @@ th {
     font-family: 'Roboto Condensed', sans-serif;
     color: #6d6d6d;
     font-weight: bolder;
-    border-right: 1.5px solid #fff;
+    font-size: 20px;
+
 }
 
     th td {
@@ -167,14 +190,13 @@ th {
     td {
         font-family: 'Roboto Condensed', sans-serif;
         color: #6d6d6d;
-        border-right: 1.5px solid #fff;
         justify-content: center;
+        border-left: solid 1px #c0bebe;
     }
 
-.voir , .supp {
-    width: 35px;
-
-}
+    .voir , .supp {
+    width: 40px;
+    }
 
 
 
