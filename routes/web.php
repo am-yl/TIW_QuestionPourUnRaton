@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\QuestionnaireController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\GroupeController;
@@ -22,9 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [Controller::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 Route::prefix('/questionnaires')->middleware(['auth'])->controller(QuestionnaireController::class)->name('questionnaires.')->group(function () {
 

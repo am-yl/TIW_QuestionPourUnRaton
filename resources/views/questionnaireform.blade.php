@@ -39,9 +39,11 @@
                             @endforeach
                         </select>
                         <!-- on affiche chaque groupe du questionnaire -->
-                        @foreach($questionnaire->groupes as $q_groupe)
-                            <span>{{ $q_groupe->name }}</span>
-                        @endforeach
+                        @if(isset($questionnaire))
+                            @foreach($questionnaire->groupes as $q_groupe)
+                                <span>{{ $q_groupe->name }}</span>
+                            @endforeach
+                        @endif
                         <button type="submit">Enregistrer</button>
                     </form>
                 </div>
