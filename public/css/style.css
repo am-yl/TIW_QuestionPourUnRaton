@@ -107,4 +107,19 @@ form {
     position: relative;
 }
 
+/************************************************** [GÉRER VOS QUESTIONNAIRES] ****/
+
+
+.gestion {
+    background-color: rgba(199, 246, 250, 0.7);
+    padding: 15px 15px;
+    border-radius: 30px;
+    border: 2px solid #c7f6fa;
+    width: 800px;
+}
+
+.titre {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #6d6d6d;
+}
 
