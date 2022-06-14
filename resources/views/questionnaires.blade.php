@@ -13,6 +13,10 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+        
         
         <!-- Styles -->
         <style>
@@ -23,7 +27,7 @@
 
 <body>
     <div class="background">
-    <!-- <img src="{{URL::asset('/img/background.jpg')}}" alt=""> -->
+    <img src="{{URL::asset('/img/background.jpg')}}" alt="">
     </div>    
     
 <x-app-layout>
@@ -34,13 +38,13 @@
     </x-slot>
 
     <div class="gestion">
-        <a href="{{ route('questionnaires.new') }}">Créer un nouveau questionnaire</a>
+        <a class="creation" href="{{ route('questionnaires.new') }}">Créer un nouveau questionnaire</a>
         <h3 class="titre">Gérer vos quizz</h3>
             <table>
                 <thead>
                     <tr>
-                        <th class="p-2 mb-2">#</th>
-                        <th class="p-2 mb-2">Intitulé du questionnaire</th>
+                        <th class="p-2 mb-2">Numéro</th>
+                        <th class="p-2 mb-2">Intitulé</th>
                         <th class="p-2 mb-2">Description</th>
                         <th class="p-2 mb-2">Nombre de questions</th>
                         <th class="p-2 mb-2">Groupe(s) assigné(s)</th>
@@ -50,16 +54,18 @@
             <tbody>
                                         @foreach ($questionnaires as $questionnaire)
                     <tr>
-                        <td class="p-2 mb-2">{{ $questionnaire->id }}</td>
-                        <td class="p-2 mb-2">{{ $questionnaire->name }}</td>
-                        <td class="p-2 mb-2">{{ $questionnaire->description }}</td>
-                        <td class="p-2 mb-2">{{ count($questionnaire->questions) }}</td>
-                        <td class="p-2 mb-2">
+                        <td class="p-2 mb-2 text-center">{{ $questionnaire->id }}</td>
+                        <td class="p-2 mb-2 text-center">{{ $questionnaire->name }}</td>
+                        <td class="p-2 mb-2 text-center">{{ $questionnaire->description }}</td>
+                        <td class="p-2 mb-2 text-center">{{ count($questionnaire->questions) }}</td>
+                        <td class="p-2 mb-2 text-center">
                                         @foreach ($questionnaire->groupes as $q_groupe)
                                         {{ $q_groupe->name }} ;
                                         @endforeach
                         </td>
-                        <td class="p-2 mb-2"><a href="{{ route('questionnaires.show',$questionnaire->id) }}">Voir</a> ; <a href="{{route('questionnaires.delete',$questionnaire->id)}}">Supprimer</a></td>
+                        <td class="p-2 mb-2">
+                            <a href="{{ route('questionnaires.show',$questionnaire->id) }}"><img class="voir" src="{{URL::asset('/img/btn_voir.png')}}" alt=""></a>
+                            <a href="{{route('questionnaires.delete',$questionnaire->id)}}"><img  class="supp" src="{{URL::asset('/img/btn_supp.png')}}" alt=""></a></td>
                         </tr>
                                         @endforeach
             </tbody>
