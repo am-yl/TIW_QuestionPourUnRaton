@@ -198,6 +198,42 @@ th {
     }
 
 
+    /************************************************** [CRÉER VOS QUESTIONNAIRES] ****/
+
+#name , #description {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1em;
+    padding: 10px 8px;
+    border-radius: 10px;
+    width: 100%;
+    display: block;
+    background-color: rgba(245, 246, 2246, 0.7);
+    box-shadow: 7px 7px 11px rgb(162, 166, 167);
+    border: none;
+}
+
+a {
+    background-color: #757575;
+    color: #f5f5f5;
+    padding: 5px;
+    border-radius: 5px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+a:hover {
+    background-color: #1b1b1b; 
+    color: rgba(199, 246, 250);
+    transition: 0.5s;
+}
+
+p {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #6d6d6d;
+}
+
+.enregistrer {
+    
+}
 
 
 

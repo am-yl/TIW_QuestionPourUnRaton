@@ -22,6 +22,14 @@
     </head>
 </html>
 
+<body>
+<div class="background">
+    <img src="{{URL::asset('/img/background.jpg')}}" alt="">
+    </div>    
+
+    <div class="raccoon">
+    <img  class="raccoon" src="{{URL::asset('/img/raccoon.png')}}" alt="logo">
+    </div>
 
 <x-app-layout>
     <x-slot name="header">
@@ -32,9 +40,9 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <a href="{{ route('questionnaires.index') }}">&larr; Retour à la liste des questionnaires</a>
+            <div class="overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6">
+                    <a class="return" href="{{ route('questionnaires.index') }}">&larr; Retour à la liste des questionnaires</a>
                     <p>Ajout des questions uniquement dans les questionnaires</p>
                     @if (isset($questionnaire))
                         <form action="{{ route('questionnaires.update', $questionnaire->id) }}" method="post">
@@ -50,14 +58,15 @@
                             <input type="text" name="description" id="description" value="{{ $questionnaire->description }}">
                         @else
                             <label for="name">Nom du questionnaire</label>
-                            <input type="text" name="name" id="name" placeholder="Le potit nom">
+                            <input type="text" name="name" id="name" placeholder="Nom">
                             <label for="description">Description du questionnaire</label>
-                            <input type="text" name="description" id="description" placeholder="La description">
+                            <input type="text" name="description" id="description" placeholder="Description">
                         @endif
-                        <button type="submit">Enregistrer</button>
+                            <button class="enregistrer" type="submit">Enregistrer</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
+</body>
