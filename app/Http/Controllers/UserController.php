@@ -61,15 +61,18 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->role_id = $request->role_id;
         $user->groupe_id = $request->groupe_id;
+        $user->save();
         $questionnaires = $user->groupe->questionnaires;
 
         foreach($questionnaires as $questionnaire) {
             // TO CHECK POUR PAS RESAVE EN BASE :) leuchtrum page 33
-            // $set = $user->questionnaires()->where('questionnaire_id', $questionnaire->id)->get();
-            $user->questionnaires()->save($questionnaire);
+            $set = $user->questionnaires()->where('questionnaire_id', $questionnaire->id)->get();
+            if(count($set) == 0) {
+                $questionnaire = Questionnaire::find($questionnaire->id);
+                $user->questionnaires()->save($questionnaire);
+            }
         }
 
-        $user->save();
 
         return redirect('users');
     }
