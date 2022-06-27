@@ -31,7 +31,7 @@
     </div>    
 
     <div class="raccoon">
-    <img src="{{URL::asset('/img/raccoon.png')}}" alt="logo">
+    <img  class="raccoon" src="{{URL::asset('/img/raccoon.png')}}" alt="logo">
     </div>
 
 <x-app-layout>
