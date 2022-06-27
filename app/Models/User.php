@@ -47,6 +47,10 @@ class User extends Authenticatable
         return $this->belongsTo(Groupe::class);
     }
 
+    public function role() {
+        return $this->belongsTo(Role::class);
+    }
+
     public function questionnaires() {
         return $this->belongsToMany(Questionnaire::class);
     }

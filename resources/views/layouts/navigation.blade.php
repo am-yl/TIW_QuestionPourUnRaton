@@ -5,12 +5,14 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('questionnaires.index') }}">
+                    <a href="{{ route('dashboard') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
+                @if(Auth::user()->role_id == 4 || Auth::user()->role_id == 3)
+                <!-- admin -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('questionnaires.index')" :active="request()->routeIs('questionnaires.index')">
                         {{ __('Questionnaires') }}
@@ -26,6 +28,26 @@
                         {{ __('Utilisateurs') }}
                     </x-nav-link>
                 </div>
+                @elseif (Auth::user()->role_id == 2)
+                <!-- élève -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('questionnaires.index')" :active="request()->routeIs('questionnaires.index')">
+                        {{ __('Questionnaires') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                        {{ __('Utilisateurs') }}
+                    </x-nav-link>
+                </div>
+                @elseif (Auth::user()->role_id == 1)
+                <!-- nouvel utilisateur -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                        {{ __('Utilisateurs') }}
+                    </x-nav-link>
+                </div>
+                @endif
             </div>
 
             <!-- Settings Dropdown -->

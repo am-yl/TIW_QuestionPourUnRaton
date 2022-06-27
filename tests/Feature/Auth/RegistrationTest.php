@@ -25,7 +25,7 @@ class RegistrationTest extends TestCase
             'email' => 'test@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
-            'type' => 0,
+            'role_id' => 1,
             'groupe_id' => 1,
         ]);
 
