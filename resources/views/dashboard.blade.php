@@ -1,7 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        @if(Auth::user()->role_id == 4)
             {{ __('Panneau d\'administration') }}
+        @else
+            {{ __('Bienvenue dans votre espace personnel !') }}
+        @endif
         </h2>
     </x-slot>
 
