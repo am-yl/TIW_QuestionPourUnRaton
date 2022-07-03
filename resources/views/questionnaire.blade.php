@@ -9,6 +9,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
+                <!-- Prof ou Admin -->
+                @if(Auth::user()->role_id == 3 || Auth::user()->role_id == 4)
                     <a href="{{ route('questionnaires.index') }}">&larr; Retour à la liste des questionnaires</a>
                     <p>{{ $questionnaire->name }}</p>
                     <p class="mb-2">{{ $questionnaire->description }}</p>
@@ -86,6 +88,14 @@
                         </tbody>
                     </table>
                     @endif
+                <!-- Eleve -->
+                @elseif(Auth::user()->role_id == 2)
+                    
+
+                <!-- Nouvel utilisateur (ne devrait pas être là) -->
+                @else
+                <span>error :)</span>
+                @endif
                 </div>
             </div>
         </div>
