@@ -33,6 +33,9 @@
                         @endforeach
                         <a href="{{route('groupes.index')}}">Voir</a>
                     </div>
+                    @elseif(Auth::user()->role_id == 3)
+
+
                     @endif
                 </div>
             </div>
