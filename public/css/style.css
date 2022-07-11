@@ -247,9 +247,12 @@ button:hover {
     transition: 0.5s;
 }
 
-#description {
+
+#description, #name {
     margin-bottom: 15px;
 }
+
+
 
 
 

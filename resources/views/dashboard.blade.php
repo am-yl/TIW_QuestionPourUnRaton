@@ -23,9 +23,9 @@
 </html>
 
 <body>
-    <div class="background">
+    <!-- <div class="background">
     <img src="{{URL::asset('/img/background.jpg')}}" alt="">
-    </div>    
+    </div>     -->
 
     <div class="raccoon">
     <img src="{{URL::asset('/img/raccoon.png')}}" alt="logo">
