@@ -11,7 +11,7 @@
                 </div>
 
                 <!-- Navigation Links -->
-                @if(Auth::user()->role_id == 4)
+                @if(Auth::user()->role_id == 4 || Auth::user()->role_id == 3)
                 <!-- admin -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('questionnaires.index')" :active="request()->routeIs('questionnaires.index')">
@@ -28,15 +28,13 @@
                         {{ __('Utilisateurs') }}
                     </x-nav-link>
                 </div>
-                @elseif (Auth::user()->role_id == 3)
-                <!-- professeur -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
-                        {{ __('Utilisateurs') }}
-                    </x-nav-link>
-                </div>
                 @elseif (Auth::user()->role_id == 2)
                 <!-- élève -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('questionnaires.index')" :active="request()->routeIs('questionnaires.index')">
+                        {{ __('Questionnaires') }}
+                    </x-nav-link>
+                </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                         {{ __('Utilisateurs') }}

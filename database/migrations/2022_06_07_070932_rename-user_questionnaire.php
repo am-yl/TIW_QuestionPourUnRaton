@@ -23,6 +23,6 @@ class RenameUserQuestionnaire extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questionnaire_user');
+        Schema::rename('questionnaire_user', 'user_questionnaire');
     }
 }

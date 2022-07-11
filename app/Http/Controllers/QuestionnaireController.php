@@ -17,6 +17,7 @@ class QuestionnaireController extends Controller
     public function index()
     {
         // var_dump(Auth::user()->questionnaires);
+        $questionnaires = false;
         switch (Auth::user()->role_id) {
             case 1 :
                 return redirect('dashboard');
@@ -28,7 +29,7 @@ class QuestionnaireController extends Controller
             case 4 :
                 $questionnaires = Questionnaire::All();
                 break;
-            }
+        }
 
         return view('questionnaires', [
             'questionnaires' => $questionnaires,
