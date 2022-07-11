@@ -21,7 +21,6 @@
                     @if(isset($question))
                         <form action="{{ route('questions.update', $question->id) }}" method="post">
                             @method('put')
-                            @csrf
                         <?php $reps = json_decode($question->reponses,true);?>
                     @else
                         <form action="{{ route('questions.store') }}" method="post">
@@ -35,14 +34,14 @@
 
                         @if(isset($question) && isset($reps))
                             @foreach($reps as $key => $value)
-                            <input type="text" name="rep[]" id="" value="{{ $key }}">
-                            <input type="checkbox" name="val[]" id="" @if($value) checked @endif>
+                            <input type="text" name="rep[]" value="{{ $key }}">
+                            <input type="checkbox" name="val[]" @if($value) checked @endif>
                             @endforeach
                         @endif
                         <?php $reste = 4; if(isset($reps)) { $reste = 4-(count($reps)); } ?>
                         @for($i=0; $i < $reste; $i++)
-                            <input type="text" name="rep[]" id="">
-                            <input type="checkbox" name="val[]" id="">
+                            <input type="text" name="rep[]">
+                            <input type="checkbox" name="val[]">
                         @endfor
 
                         <input type="hidden" name="questionnaire_id" value="{{ $questionnaire->id }}">
@@ -90,8 +89,23 @@
                     @endif
                 <!-- Eleve -->
                 @elseif(Auth::user()->role_id == 2)
-                    
+                <form action="{{ route('questions.answer', $questionnaire->id) }}" method="post">
+                    @csrf
 
+                    @foreach($questionnaire->questions as $eleve_question)
+
+                        <h3>{{ $eleve_question->name }}</h3>
+
+                        <?php $reponses = json_decode($eleve_question->reponses,true);?>
+                        @if(isset($reponses))
+                            @foreach($reponses as $key => $value)
+                            <input type="checkbox" name="{{$eleve_question->id}}-{{$key}}">
+                            <label for="{{$eleve_question->id}}-{{$key}}">{{$key}}</label>
+                            @endforeach
+                        @endif
+                    @endforeach
+                    <button type="submit">Valider</button>
+                </form>
                 <!-- Nouvel utilisateur (ne devrait pas être là) -->
                 @else
                 <span>error :)</span>

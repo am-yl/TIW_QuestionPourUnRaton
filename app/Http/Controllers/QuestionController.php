@@ -67,12 +67,43 @@ class QuestionController extends Controller
                 }
             }
             if ($bonneRep > 0 && $nbRep > 1) {
+                $question->name = $request->name;
                 $question->reponses = json_encode($reps);
                 $question->save();
             }
         }
         return redirect()
             ->action([QuestionnaireController::class, 'show'], ['id' => $question->questionnaire_id]);
+    }
+
+    /**
+     * Check the answers to the test
+     *
+     * @param int $id
+     * @param  \Illuminate\Http\Request  $request
+     */
+    public function answer(Request $request, $id) {
+        $questionnaire = Questionnaire::find($id);
+        $resultat = 0;
+        foreach($questionnaire->questions as $question) {
+            $note = 0;
+            $reponses = json_decode($question->reponses,true);
+            foreach($reponses as $reponse => $bool) {
+                // e_rep = une réponse d'un élève
+                // reponse = une réponse du questionnaire
+                // on compare les deux pour compter les points
+                $e_rep = $question->id.'-'.$reponse;
+                if($bool && $request->$e_rep == "on")  {
+                    $note += 1;
+                } else if (!$bool && $request->$e_rep == "on") {
+                    $note -= 1;
+                }
+            }
+            $resultat += $note/count($reponses);
+            var_dump($note);
+        }
+        $resultat = $resultat/count($questionnaire->questions);
+        var_dump($resultat*20);
     }
 
     /**
@@ -93,4 +124,7 @@ class QuestionController extends Controller
         return redirect()
             ->action([QuestionnaireController::class, 'show'], ['id' => $q_id]);
     }
+
 }
+
+

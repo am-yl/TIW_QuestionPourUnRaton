@@ -65,7 +65,7 @@
                                         Non Applicable
                                         @endif
                                     </p>
-                                    <button>Répondre au questionnaire</button>
+                                    <a href="{{ route('questionnaires.show', $questionnaire->id) }}">Répondre au questionnaire</a>
                                 </div>
                             @endforeach
                             @endif
