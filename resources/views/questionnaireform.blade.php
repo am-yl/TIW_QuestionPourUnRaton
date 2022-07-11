@@ -44,7 +44,7 @@
                 <div class="p-6">
                     <a class="return" href="{{ route('questionnaires.index') }}">&larr; Retour à la liste des questionnaires</a>
                     @if (isset($questionnaire))
-                        <form class="form" action="{{ route('questionnaires.update', $questionnaire->id) }}" method="post">
+                        <form action="{{ route('questionnaires.update', $questionnaire->id) }}" method="post">
                         @method('put')
                     @else
                         <form action="{{ route('questionnaires.store') }}" method="post">
