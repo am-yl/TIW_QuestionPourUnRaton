@@ -43,7 +43,6 @@
 
     <div class="gestion">
         <a class="creation" href="{{ route('questionnaires.new') }}">Créer un nouveau questionnaire</a>
-        <a class="groupe">Créer un groupe</a>
         <h3 class="titre">Gérer vos quizz</h3>
             <table>
                 <thead>

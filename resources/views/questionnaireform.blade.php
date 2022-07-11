@@ -27,7 +27,7 @@
     <img src="{{URL::asset('/img/background.jpg')}}" alt="">
     </div>    
 
-    <div class="raccoon">
+    <div class="logo-gauche">
     <img  class="raccoon" src="{{URL::asset('/img/raccoon.png')}}" alt="logo">
     </div>
 
@@ -43,9 +43,8 @@
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
                     <a class="return" href="{{ route('questionnaires.index') }}">&larr; Retour à la liste des questionnaires</a>
-                    <p>Ajout des questions uniquement dans les questionnaires</p>
                     @if (isset($questionnaire))
-                        <form action="{{ route('questionnaires.update', $questionnaire->id) }}" method="post">
+                        <form class="form" action="{{ route('questionnaires.update', $questionnaire->id) }}" method="post">
                         @method('put')
                     @else
                         <form action="{{ route('questionnaires.store') }}" method="post">
