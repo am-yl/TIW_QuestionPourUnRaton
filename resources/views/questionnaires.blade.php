@@ -74,12 +74,15 @@
                         <p>{{ $questionnaire->description}}<br/>{{count($questionnaire->questions)}} questions</p>
                         <p>Note :
                             @if (isset(Auth::user()->questionnaires->where('id', '=', $questionnaire->id)->resultat))
-                            {{ Auth::user()->questionnaires->where('id', '=', $questionnaire->id)->resultat }} / {{ count($questionnaire->questions) }}
+                            {{ Auth::user()->questionnaires->where('id', '=', $questionnaire->id)->resultat }}/20
                             @else
                             Non Applicable
                             @endif
                         </p>
-                        <a href="{{ route('questionnaires.show', $questionnaire->id) }}">Répondre au questionnaire</a>
+                        @if (isset(Auth::user()->questionnaires->where('id', '=', $questionnaire->id)->resultat))
+                            Fait !
+                        @else
+                            <a href="{{ route('questionnaires.show', $questionnaire->id) }}">Répondre au questionnaire</a>
                     </div>
                 @endforeach
             @endif

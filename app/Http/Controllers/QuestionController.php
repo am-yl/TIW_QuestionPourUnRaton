@@ -99,6 +99,9 @@ class QuestionController extends Controller
                     $note -= 1;
                 }
             }
+            if($note < 0) {
+                $note = 0;
+            }
             $resultat += $note/count($reponses);
             var_dump($note);
         }
