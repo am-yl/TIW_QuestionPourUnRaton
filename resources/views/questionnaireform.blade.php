@@ -39,7 +39,6 @@
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
                     <a class="return" href="{{ route('questionnaires.index') }}">&larr; Retour à la liste des questionnaires</a>
-                    <p>Ajout des questions uniquement dans les questionnaires</p>
                     @if (isset($questionnaire))
                         <a href="{{ route('questionnaires.index') }}">&larr; Retour à la liste des questionnaires</a>
                         <p>Ajout des questions uniquement dans les questionnaires</p>

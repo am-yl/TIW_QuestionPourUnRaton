@@ -23,7 +23,7 @@
 </html>
 
 <body>
-    <div class="background">
+    <!-- <div class="background">
     <img src="{{URL::asset('/img/background.jpg')}}" alt="">
     </div>
 
