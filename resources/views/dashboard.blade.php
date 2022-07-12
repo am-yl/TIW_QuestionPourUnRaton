@@ -27,10 +27,6 @@
     <img src="{{URL::asset('/img/background.jpg')}}" alt="">
     </div>
 
-    <div class="raccoon">
-    <img src="{{URL::asset('/img/raccoon.png')}}" alt="logo">
-    </div>
-
     <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
