@@ -1,5 +1,5 @@
 <x-guest-layout>
-	<div class="h-screen flex flex-col items-center justify-center m-auto sm:px-6 lg:px-8">
+	<div class="min-h-full h-screen flex flex-col items-center justify-center m-auto sm:px-6 lg:px-8">
 		<div class="max-w-md">
 			<img class="logo" src="{{asset('/img/raccoon.png')}}" alt="logo">
 			<h1 class="mt-6 text-center text-3xl font-extrabold">QUESTIONS POUR UN RATON</h1>
