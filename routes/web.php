@@ -53,6 +53,8 @@ Route::prefix('/questions')->middleware(['auth'])->controller(QuestionController
 
     Route::get('/{q_id}/delete/{id}', 'destroy')->name('delete');
 
+    Route::post('/repondre/{id}', 'answer')->name('answer');
+
 });
 
 Route::prefix('/groupes')->middleware(['auth'])->controller(GroupeController::class)->name('groupes.')->group(function () {
