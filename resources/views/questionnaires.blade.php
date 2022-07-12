@@ -31,33 +31,15 @@
                                     </td>
                                     <td class="p-2 mb-2">
                                         <a href="{{ route('questionnaires.show',$questionnaire->id) }}"><img class="voir" src="{{URL::asset('/img/btn_voir.png')}}" alt=""></a>
-                                        <a href="{{route('questionnaires.delete',$questionnaire->id)}}"><img  class="supp" src="{{URL::asset('/img/btn_supp.png')}}" alt=""></a></td>
-                                    </tr>
-                                    @endforeach
-                                @endif
+                                        <a href="{{route('questionnaires.delete',$questionnaire->id)}}"><img  class="supp" src="{{URL::asset('/img/btn_supp.png')}}" alt=""></a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            @endif
                             </tbody>
                         </table>
                         @else
                         <p>Vous n'avez pas de questionnaires</p>
-                        @endif
-                    <!-- Eleve -->
-                    @elseif(Auth::user()->role_id == 2)
-                        @if($questionnaires != false)
-                            @if(count($questionnaires) > 0)
-                            @foreach ($questionnaires as $questionnaire)
-                                <div>
-                                    <h4>{{ $questionnaire->name }}</h4>
-                                    <p>{{ $questionnaire->description}}<br/>{{count($questionnaire->questions)}} questions</p>
-                                    <p>Note :
-                                        @if (isset(Auth::user()->questionnaires->where('id', '=', $questionnaire->id)->resultat))
-                                        {{ Auth::user()->questionnaires->where('id', '=', $questionnaire->id)->resultat }} / {{ count($questionnaire->questions) }}
-                                        @else
-                                        Non Applicable
-                                        @endif
-                                    </p>
-                                    <a href="{{ route('questionnaires.show', $questionnaire->id) }}">Répondre au questionnaire</a>
-                                </div>
-                            @endforeach
                         @endif
                     </tbody>
                 </table>
