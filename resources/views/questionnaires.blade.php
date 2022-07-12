@@ -25,9 +25,9 @@
                                     <td class="p-2 mb-2 text-center">{{ $questionnaire->description }}</td>
                                     <td class="p-2 mb-2 text-center">{{ count($questionnaire->questions) }}</td>
                                     <td class="p-2 mb-2 text-center">
-                                                    @foreach ($questionnaire->groupes as $q_groupe)
-                                                    {{ $q_groupe->name }} ;
-                                                    @endforeach
+                                        @foreach ($questionnaire->groupes as $q_groupe)
+                                        {{ $q_groupe->name }} ;
+                                        @endforeach
                                     </td>
                                     <td class="p-2 mb-2">
                                         <a href="{{ route('questionnaires.show',$questionnaire->id) }}"><img class="voir" src="{{URL::asset('/img/btn_voir.png')}}" alt=""></a>
