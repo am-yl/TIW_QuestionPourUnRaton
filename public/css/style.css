@@ -12,10 +12,18 @@ body {
     background-size: cover;
     height:100vh;
     overflow: hidden;
+    font-family: 'Roboto Condensed';
+    font-size: 18px;
+    color: #6D6D6D;
 }
 
+/************************************************** [NAVIGATION] */
 
-/************************************************** [ACCUEIL] ****/
+.raccoon {
+    width: 100px;
+}
+
+/************************************************** [BIENVE/LOGIN/REGISTER] ****/
 
 h1 {
     font-family: 'Bebas Neue', cursive;
@@ -82,12 +90,6 @@ h1 {
         color: #6d6d6d;
     }
 
-    #button-parent {
-        position:absolute;
-        top:81%;
-        left:81%;
-    }
-
     .submit {
         font-family: 'Bebas Neue', cursive;
         background-color: #6d6d6d;
@@ -112,26 +114,14 @@ h1 {
     }
 
 
-.login {
-    position: relative;
-}
-
-/************************************************** [GÉRER VOS QUESTIONNAIRES] ****/
-
-.raccoon {
-    width: 100px;
-    position: relative;
-    padding: 5px;
-
-}
+/************************************************** [GÉRER VOS QUESTIONNAIRES/GROUPES/UTILISATEURS] ****/
 
 .gestion {
     background-color: rgba(199, 246, 250, 0.7);
     padding: 15px 15px;
     border-radius: 30px;
     border: 2px solid #c7f6fa;
-    height: 450px;
-
+    width:75%;
 }
 
 .creation {
@@ -140,8 +130,12 @@ h1 {
     background-color: #6d6d6d;
     padding: 5px;
     border-radius: 10px;
-    width: 208px;
-    margin-bottom: 5px;
+}
+
+.creation:hover  {
+    background-color: #1b1b1b;
+    color: rgba(199, 246, 250);
+    transition: 0.5s;
 }
 
 .groupe {
@@ -150,13 +144,6 @@ h1 {
     background-color: #6d6d6d;
     padding: 5px;
     border-radius: 10px;
-    width: 114px;
-}
-
-.creation:hover  {
-    background-color: #1b1b1b;
-    color: rgba(199, 246, 250);
-    transition: 0.5s;
 }
 
 .groupe:hover {
@@ -175,37 +162,27 @@ h1 {
     position: relative;
 }
 
-main {
-    display: flex;
-    justify-content: center;
-    position: relative;
-}
-
-
 th {
     font-family: 'Roboto Condensed', sans-serif;
     color: #6d6d6d;
     font-weight: bolder;
     font-size: 20px;
-
+    border-right: solid 1px #c0bebe;
 }
 
-    th td {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    }
+td {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #6d6d6d;
+    border-right: solid 1px #c0bebe;
+}
 
-    td {
-        font-family: 'Roboto Condensed', sans-serif;
-        color: #6d6d6d;
-        justify-content: center;
-        border-left: solid 1px #c0bebe;
-    }
+td:last-child, th:last-child {
+    border-right:none;
+}
 
-    .voir , .supp {
+.voir , .supp {
     width: 40px;
-    }
+}
 
 
     /************************************************** [CRÉER VOS QUESTIONNAIRES] ****/

@@ -27,7 +27,7 @@
     <body >
             @include('layouts.navigation')
 
-            <main>
+            <main class="flex justify-center">
                 {{ $slot }}
             </main>
     </body>

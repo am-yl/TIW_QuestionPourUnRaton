@@ -81,7 +81,10 @@
                                     @endif
                                 @endforeach
                                 </td>
-                                <td class="p-2 mb-2"><a href="{{ route('questionnaires.showedit',[$q_question->questionnaire_id, $q_question->id]) }}">Modifier</a> ; <a href="{{route('questions.delete',[$q_question->questionnaire_id, $q_question->id])}}">Supprimer</a></td>
+                                <td class="p-2 mb-2">
+                                    <a href="{{ route('questionnaires.showedit',[$q_question->questionnaire_id, $q_question->id]) }}"><img class="voir" src="{{asset('/img/btn_voir.png')}}" alt=""></a>
+                                    <a href="{{route('questions.delete',[$q_question->questionnaire_id, $q_question->id])}}"><img class="supp" src="{{asset('/img/btn_supp.png')}}" alt=""></a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

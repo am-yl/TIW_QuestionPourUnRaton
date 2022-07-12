@@ -1,9 +1,9 @@
 <x-app-layout>
     <!-- Prof ou Admin -->
     @if(Auth::user()->role_id == 3 || Auth::user()->role_id == 4)
-        <div class="gestion">
-            <h3 class="titre">Gérer vos quizz</h3>
-            <a href="{{ route('questionnaires.new') }}">Créer un nouveau questionnaire</a>
+        <div class="gestion my-12">
+            <h2 class="titre">Gérer vos quizz</h2>
+            <a class="creation inline-block my-8" href="{{ route('questionnaires.new') }}">Créer un nouveau questionnaire</a>
             @if($questionnaires != false)
                 <table>
                     <thead>
@@ -29,9 +29,9 @@
                                         {{ $q_groupe->name }} ;
                                         @endforeach
                                     </td>
-                                    <td class="p-2 mb-2">
-                                        <a href="{{ route('questionnaires.show',$questionnaire->id) }}"><img class="voir" src="{{URL::asset('/img/btn_voir.png')}}" alt=""></a>
-                                        <a href="{{route('questionnaires.delete',$questionnaire->id)}}"><img  class="supp" src="{{URL::asset('/img/btn_supp.png')}}" alt=""></a>
+                                    <td class="p-2 mb-2 text-center flex flex-col items-center justify-center">
+                                        <a href="{{ route('questionnaires.show',$questionnaire->id) }}"><img class="voir" src="{{asset('/img/btn_voir.png')}}" alt=""></a>
+                                        <a href="{{route('questionnaires.delete',$questionnaire->id)}}"><img class="supp" src="{{asset('/img/btn_supp.png')}}" alt=""></a>
                                     </td>
                                 </tr>
                             @endforeach
