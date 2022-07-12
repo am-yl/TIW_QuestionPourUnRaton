@@ -1,6 +1,6 @@
 <x-app-layout>
     <style>h3 {font-weight:bold;} .parent {display:flex; align-items:top; justify-content:space-between} .w33 {width:30%; display:inherit; align-items:center;flex-direction:column;}</style>
-    <div class="gestion my-12 parent">
+    <div class="gestion my-12 parent max-w-7xl mx-auto sm:px-6 lg:px-8">
         @if(Auth::user()->role_id == 4)
         <div class="w33">
             <h3>Membres</h3>

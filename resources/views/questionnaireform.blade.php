@@ -1,47 +1,40 @@
 <x-app-layout>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6">
-                    <a class="return" href="{{ route('questionnaires.index') }}">&larr; Retour à la liste des questionnaires</a>
-                    @if (isset($questionnaire))
-                        <p>Ajout des questions uniquement dans les questionnaires</p>
-                        <form action="{{ route('questionnaires.update', $questionnaire->id) }}" method="post">
-                            @method('put')
-                    @else
-                        <p>Ajout des questions uniquement dans les questionnaires</p>
-                        <form action="{{ route('questionnaires.store') }}" method="post">
-                    @endif
-                        @csrf
-                        @if(isset($questionnaire))
-                            <label for="name">Changer le nom du questionnaire : </label>
-                            <input type="text" name="name" id="name" value="{{ $questionnaire->name }}">
-                            <label for="description">Changer la description du questionnaire : </label>
-                            <input type="text" name="description" id="description" value="{{ $questionnaire->description }}">
-                        @else
-                            <label for="name">Nom du questionnaire</label>
-                            <input type="text" name="name" id="name" placeholder="Nom">
-                            <label for="description">Description du questionnaire</label>
-                            <input type="text" name="description" id="description" placeholder="Description">
-                        @endif
-                        <!-- select pour choisir les groupes du questionnaires -->
-                        <label for="groupe_id">Choisissez les groupes</label>
-                        <select name="groupe_id[]" id="groupe_id" multiple>
-                            @foreach($groupes as $groupe)
-                            <option value="{{ $groupe->id }}">{{ $groupe->name }}</option>
-                            @endforeach
-                        </select>
-                        <!-- on affiche chaque groupe du questionnaire -->
-                        @if(isset($questionnaire))
-                            @foreach($questionnaire->groupes as $q_groupe)
-                                <span>{{ $q_groupe->name }}</span>
-                            @endforeach
-                        @endif
-                        <button type="submit" class="submit">Enregistrer</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+    <div class="gestion my-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <a class="return" href="{{ route('questionnaires.index') }}">&larr; Retour à la liste des questionnaires</a>
+        @if (isset($questionnaire))
+            <p>Ajout des questions uniquement dans les questionnaires</p>
+            <form action="{{ route('questionnaires.update', $questionnaire->id) }}" method="post">
+                @method('put')
+        @else
+            <p>Ajout des questions uniquement dans les questionnaires</p>
+            <form action="{{ route('questionnaires.store') }}" method="post">
+        @endif
+            @csrf
+            @if(isset($questionnaire))
+                <label for="name">Changer le nom du questionnaire : </label>
+                <input type="text" name="name" id="name" value="{{ $questionnaire->name }}">
+                <label for="description">Changer la description du questionnaire : </label>
+                <input type="text" name="description" id="description" value="{{ $questionnaire->description }}">
+            @else
+                <label for="name">Nom du questionnaire</label>
+                <input type="text" name="name" id="name" placeholder="Nom">
+                <label for="description">Description du questionnaire</label>
+                <input type="text" name="description" id="description" placeholder="Description">
+            @endif
+            <!-- select pour choisir les groupes du questionnaires -->
+            <label for="groupe_id">Choisissez les groupes</label>
+            <select name="groupe_id[]" id="groupe_id" multiple>
+                @foreach($groupes as $groupe)
+                <option value="{{ $groupe->id }}">{{ $groupe->name }}</option>
+                @endforeach
+            </select>
+            <!-- on affiche chaque groupe du questionnaire -->
+            @if(isset($questionnaire))
+                @foreach($questionnaire->groupes as $q_groupe)
+                    <span>{{ $q_groupe->name }}</span>
+                @endforeach
+            @endif
+            <button type="submit" class="submit">Enregistrer</button>
+        </form>
     </div>
 </x-app-layout>

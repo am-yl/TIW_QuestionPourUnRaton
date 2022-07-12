@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="gestion my-12">
+    <div class="gestion my-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
         <h2 class="titre">Gérer vos utilisateurs</h2>
         <table>
             <thead>
