@@ -4,28 +4,10 @@ namespace App\Http\Controllers;
 use App\Models\Questionnaire;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -36,7 +18,6 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $question = new Question;
-
 
         $question->name = $request->name;
         $question->questionnaire_id = $request->questionnaire_id;
@@ -62,28 +43,6 @@ class QuestionController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -92,7 +51,59 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $question = Question::find($id);
+        if($question->questionnaire_id == $request->questionnaire_id) {
+            $bonneRep = 0;
+            $nbRep = 0;
+            foreach($request->rep as $key => $rep) {
+                if($rep != "") {
+                    if(isset($request->val[$key])) {
+                        $reps[$rep] = true;
+                        $bonneRep++;
+                    } else {
+                        $reps[$rep] = false;
+                    }
+                    $nbRep++;
+                }
+            }
+            if ($bonneRep > 0 && $nbRep > 1) {
+                $question->name = $request->name;
+                $question->reponses = json_encode($reps);
+                $question->save();
+            }
+        }
+        return redirect()
+            ->action([QuestionnaireController::class, 'show'], ['id' => $question->questionnaire_id]);
+    }
+
+    /**
+     * Check the answers to the test
+     *
+     * @param int $id
+     * @param  \Illuminate\Http\Request  $request
+     */
+    public function answer(Request $request, $id) {
+        $questionnaire = Questionnaire::find($id);
+        $resultat = 0;
+        foreach($questionnaire->questions as $question) {
+            $note = 0;
+            $reponses = json_decode($question->reponses,true);
+            foreach($reponses as $reponse => $bool) {
+                // e_rep = une réponse d'un élève
+                // reponse = une réponse du questionnaire
+                // on compare les deux pour compter les points
+                $e_rep = $question->id.'-'.$reponse;
+                if($bool && $request->$e_rep == "on")  {
+                    $note += 1;
+                } else if (!$bool && $request->$e_rep == "on") {
+                    $note -= 1;
+                }
+            }
+            $resultat += $note/count($reponses);
+            var_dump($note);
+        }
+        $resultat = $resultat/count($questionnaire->questions);
+        var_dump($resultat*20);
     }
 
     /**
@@ -113,4 +124,7 @@ class QuestionController extends Controller
         return redirect()
             ->action([QuestionnaireController::class, 'show'], ['id' => $q_id]);
     }
+
 }
+
+

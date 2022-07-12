@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UserQuestionnaire extends Migration
+class CreateRoleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class UserQuestionnaire extends Migration
      */
     public function up()
     {
-        Schema::create('user_questionnaire', function(Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('user_id')->onDelete('cascade');
-            $table->integer('questionnaire_id')->onDelete('cascade');
-            $table->integer('resultat')->nullable();
+        Schema::create('roles', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class UserQuestionnaire extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_questionnaire');
+        Schema::dropIfExists('roles');
     }
 }

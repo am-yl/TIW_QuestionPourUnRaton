@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\Questionnaire;
 use App\Models\Question;
+use App\Models\Groupe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionnaireController extends Controller
 {
@@ -14,7 +16,21 @@ class QuestionnaireController extends Controller
      */
     public function index()
     {
-        $questionnaires = Questionnaire::All();
+        // var_dump(Auth::user()->questionnaires);
+        $questionnaires = false;
+        switch (Auth::user()->role_id) {
+            case 1 :
+                return redirect('dashboard');
+                break;
+            case 2 :
+            case 3 :
+                $questionnaires = Auth::user()->questionnaires;
+                break;
+            case 4 :
+                $questionnaires = Questionnaire::All();
+                break;
+        }
+
         return view('questionnaires', [
             'questionnaires' => $questionnaires,
         ]);
@@ -27,7 +43,10 @@ class QuestionnaireController extends Controller
      */
     public function create()
     {
-        return view('questionnaireform');
+        $groupes = Groupe::All();
+        return view('questionnaireform', [
+            'groupes' => $groupes,
+        ]);
     }
 
     /**
@@ -42,6 +61,14 @@ class QuestionnaireController extends Controller
         $questionnaire->name = $request->name;
         $questionnaire->description = $request->description;
         $questionnaire->save();
+
+        if(isset($request->groupe_id)) {
+            foreach($request->groupe_id as $groupe_id) {
+                $groupe = Groupe::find($groupe_id);
+                $questionnaire->groupes()->save($groupe);
+            }
+        }
+
         return redirect('questionnaires');
     }
 
@@ -51,10 +78,16 @@ class QuestionnaireController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $question_id = 0)
     {
         $questionnaire = Questionnaire::find($id);
-
+        $question = Question::find($question_id);
+        if (isset($question)) {
+            return view('questionnaire', [
+                'questionnaire' => $questionnaire,
+                'question' => $question,
+            ]);
+        }
         return view('questionnaire', [
             'questionnaire' => $questionnaire,
         ]);
@@ -69,9 +102,11 @@ class QuestionnaireController extends Controller
     public function edit($id)
     {
         $questionnaire = Questionnaire::find($id);
+        $groupes = Groupe::All();
         if(isset($questionnaire)) {
             return view('questionnaireform', [
                 'questionnaire' => $questionnaire,
+                'groupes' => $groupes,
             ]);
         } else {
             return view('questionnaires');
@@ -92,6 +127,15 @@ class QuestionnaireController extends Controller
         $questionnaire->description = $request->description;
         $questionnaire->save();
 
+        if(isset($request->groupe_id)) {
+            foreach ($request->groupe_id as $groupe_id) {
+                $set = $questionnaire->groupes()->where('groupe_id', $groupe_id)->get();
+                if(count($set) == 0) {
+                    $groupe = Groupe::find($groupe_id);
+                    $questionnaire->groupes()->save($groupe);
+                }
+            }
+        }
         return redirect('questionnaires');
     }
 
@@ -105,6 +149,8 @@ class QuestionnaireController extends Controller
     {
         $questionnaire = Questionnaire::find($id);
         if(isset($questionnaire)) {
+            $questionnaire->groupes()->detach();
+            $questionnaire->users()->detach();
             $questionnaire->delete();
         }
         return redirect('questionnaires');

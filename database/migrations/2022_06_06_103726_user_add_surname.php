@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class QuestionnairesIdForQuestions extends Migration
+class UserAddSurname extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class QuestionnairesIdForQuestions extends Migration
      */
     public function up()
     {
-        Schema::table('questions', function(Blueprint $table) {
-            $table->foreignId('questionnaire_id')->constrained()->nullable();
+        Schema::table('users', function(Blueprint $table) {
+            $table->string('surname')->nullable();
         });
     }
 
@@ -25,9 +25,8 @@ class QuestionnairesIdForQuestions extends Migration
      */
     public function down()
     {
-        Schema::table('questions', function(Blueprint $table) {
-            $table->dropForeign('questions_questionnaire_id_foreign');
-            $table->dropColumn('questionnaire_id');
+        Schema::table('users', function(Blueprint $table) {
+            $table->dropColumn('surname');
         });
     }
 }

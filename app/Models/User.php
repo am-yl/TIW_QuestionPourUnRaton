@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
         'email',
         'password',
     ];
@@ -44,6 +45,10 @@ class User extends Authenticatable
 
     public function groupe() {
         return $this->belongsTo(Groupe::class);
+    }
+
+    public function role() {
+        return $this->belongsTo(Role::class);
     }
 
     public function questionnaires() {

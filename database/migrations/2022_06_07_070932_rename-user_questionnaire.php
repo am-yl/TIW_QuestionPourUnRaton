@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Users extends Migration
+class RenameUserQuestionnaire extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,7 @@ class Users extends Migration
      */
     public function up()
     {
-        Schema::table('users', function(Blueprint $table) {
-            $table->integer('type')->nullable();
-        });
+        Schema::rename('user_questionnaire', 'questionnaire_user');
     }
 
     /**
@@ -25,8 +23,6 @@ class Users extends Migration
      */
     public function down()
     {
-        Schema::table('users', function(Blueprint $table) {
-            $table->dropColumn('type');
-        });
+        Schema::rename('questionnaire_user', 'user_questionnaire');
     }
 }
