@@ -3,7 +3,7 @@
     @if(Auth::user()->role_id == 3 || Auth::user()->role_id == 4)
         <div class="gestion my-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
             <h2 class="titre">Gérer vos quizz</h2>
-            <a class="creation inline-block my-8" href="{{ route('questionnaires.new') }}">Créer un nouveau questionnaire</a>
+            <a class="btnNav inline-block my-8" href="{{ route('questionnaires.new') }}">Créer un nouveau questionnaire</a>
             @if($questionnaires != false)
                 <table>
                     <thead>

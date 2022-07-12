@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="gestion my-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
         @if (isset($user))
-            <a href="{{ route('users.index') }}">&larr; Retour à la liste des utilisateurs</a>
+            <a class="btnNav" href="{{ route('users.index') }}">&larr; Retour à la liste des utilisateurs</a>
             <form action="{{ route('users.update', $user->id) }}" method="post">
                 @method('put')
             @csrf

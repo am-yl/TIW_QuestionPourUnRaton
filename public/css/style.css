@@ -128,7 +128,7 @@ h1 {
     width:100%;
 }
 
-.creation {
+.btnNav {
     font-family: 'Roboto Condensed', sans-serif;
     color: #fff;
     background-color: #6d6d6d;
@@ -136,7 +136,7 @@ h1 {
     border-radius: 10px;
 }
 
-.creation:hover  {
+.btnNav:hover  {
     background-color: #1b1b1b;
     color: rgba(199, 246, 250);
     transition: 0.5s;

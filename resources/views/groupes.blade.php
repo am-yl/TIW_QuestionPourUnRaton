@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="gestion my-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
         <h2 class="titre">Gérer vos groupes</h2>
-        <a class="creation inline-block my-8" href="{{ route('groupes.new') }}">Ajouter un groupe</a>
+        <a class="btnNav inline-block my-8" href="{{ route('groupes.new') }}">Ajouter un groupe</a>
         <table>
             <thead>
                 <tr>
