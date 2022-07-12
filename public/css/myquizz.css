@@ -1,0 +1,89 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Roboto Condensed';
+    font-size: 18px;
+    color: #6D6D6D;
+    background: no-repeat url("https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg");
+    background-size:cover;
+    
+    padding: 25px 20px;
+}
+
+.slider{
+    display:flex;
+    justify-content: space-between;
+}
+h1{
+    position:relative;
+    top: 60px;
+    left:-120px;
+    z-index:1;
+    font-size:2em;
+}
+
+
+.head_user{
+    margin: 15px -600px;
+}
+.logo_QPR{
+    width:100px;
+    height:100px;
+}
+.PP{
+    width: 100px;
+    height: 100px;
+    background-size:4.2em;
+    border-radius:100%;
+    background: rgba(245, 245, 245, 0.6);
+    border: 10px solid #C7F6FA;
+}
+.User{
+    margin:0 0 0 450px;
+}
+
+.blocnote{
+    width: 300px;
+    height: 351px;
+    
+    background: #FAF8C7;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+.slider2{
+    display:flex;
+    justify-content: space-between;
+    padding:1vw;
+}
+.task{
+    list-style-type: square;
+    padding: 50px;
+}
+.task li{
+    padding: 15px 0;
+}
+.btn{
+    background-color:#6D6D6D;
+    border-radius: 30px;
+    margin:75px;
+    padding: 10px;
+    color:#fff;
+    text-decoration:none;
+}
+.btn:hover{
+    background-color:#ffffff;
+    color:rgb(0, 0, 0);
+    border:solid 1px #000;
+}
+.titles_quizz{
+    padding:  10px 8vw;
+}
+
+/*
+.fleche_g{
+    
+}
+*/
