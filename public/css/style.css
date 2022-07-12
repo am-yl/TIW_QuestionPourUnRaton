@@ -124,6 +124,10 @@ h1 {
     width:75%;
 }
 
+.gestion table {
+    width:100%;
+}
+
 .creation {
     font-family: 'Roboto Condensed', sans-serif;
     color: #fff;

@@ -29,7 +29,7 @@
                                         {{ $q_groupe->name }} ;
                                         @endforeach
                                     </td>
-                                    <td class="p-2 mb-2 text-center flex flex-col items-center justify-center">
+                                    <td class="p-2 mb-2 text-center flex items-center justify-center">
                                         <a href="{{ route('questionnaires.show',$questionnaire->id) }}"><img class="voir" src="{{asset('/img/btn_voir.png')}}" alt=""></a>
                                         <a href="{{route('questionnaires.delete',$questionnaire->id)}}"><img class="supp" src="{{asset('/img/btn_supp.png')}}" alt=""></a>
                                     </td>

@@ -23,7 +23,7 @@
                         <td class="p-2 mb-2">@foreach($groupe->users->where('role_id', '3') as $prof) {{$prof->name}} {{$prof->surname}} @endforeach</td>
                         <td class="p-2 mb-2">{{ count($groupe->questionnaires) }}</td>
                         <td class="p-2 mb-2">{{ count($groupe->users->where('role_id', '2')) }}</td>
-                        <td class="p-2 mb-2">
+                        <td class="p-2 mb-2 text-center flex items-center justify-center">
                             <a href="{{ route('groupes.show', $groupe->id) }}"><img class="voir" src="{{asset('/img/btn_voir.png')}}" alt=""></a>
                             <a href="{{ route('groupes.delete', $groupe->id) }}"><img class="supp" src="{{asset('/img/btn_supp.png')}}" alt=""></a></td>
                     </tr>

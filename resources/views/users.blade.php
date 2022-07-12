@@ -25,7 +25,7 @@
                         <td class="p-2 mb-2">@if(isset($user->role)) {{ $user->role->name }} @endif</td>
                         <td class="p-2 mb-2">{{ $user->groupe->name }}</td>
                         <td class="p-2 mb-2">{{ count($user->questionnaires->where('resultat', '>', 0)) }}</td>
-                        <td class="p-2 mb-2">
+                        <td class="p-2 mb-2 text-center flex items-center justify-center">
                             <a href="{{ route('users.edit', $user->id) }}"><img class="voir" src="{{asset('/img/btn_voir.png')}}" alt=""></a>
                             <a href="{{ route('users.delete', $user->id) }}"><img class="supp" src="{{asset('/img/btn_supp.png')}}" alt=""></a>
                         </td>
