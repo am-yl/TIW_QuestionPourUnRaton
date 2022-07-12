@@ -2,7 +2,7 @@
     <div class="gestion my-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
         <!-- Prof ou Admin -->
         @if(Auth::user()->role_id == 3 || Auth::user()->role_id == 4)
-            <a href="{{ route('questionnaires.index') }}">&larr; Retour à la liste des questionnaires</a>
+            <a class="btnNav" href="{{ route('questionnaires.index') }}">&larr; Retour à la liste des questionnaires</a>
             <p>{{ $questionnaire->name }}</p>
             <p class="mb-2">{{ $questionnaire->description }}</p>
             <a href="{{ route('questionnaires.edit', $questionnaire->id)}}"  class="mb-2">Modifier le questionnaire</a>

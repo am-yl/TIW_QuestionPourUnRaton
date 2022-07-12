@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="gestion my-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <a href="{{ route('groupes.index')}}">&larr; voir les groupes</a>
+        <a class="btnNav" href="{{ route('groupes.index')}}">&larr; Voir les groupes</a>
         <h3>titre : {{ $groupe->name }}</h3>
         <p>desc : {{ $groupe->description }}</p>
         <a href="{{ route('groupes.edit', $groupe->id) }}">Modifier le groupe</a>

@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="gestion my-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <a class="return" href="{{ route('questionnaires.index') }}">&larr; Retour à la liste des questionnaires</a>
+        <a class="btnNav" href="{{ route('questionnaires.index') }}">&larr; Retour à la liste des questionnaires</a>
         @if (isset($questionnaire))
             <p>Ajout des questions uniquement dans les questionnaires</p>
             <form action="{{ route('questionnaires.update', $questionnaire->id) }}" method="post">

@@ -203,14 +203,6 @@ td:last-child, th:last-child {
     border: none;
 }
 
-.return {
-    background-color: #757575;
-    color: #f5f5f5;
-    padding: 5px;
-    border-radius: 5px;
-    font-family: 'Roboto Condensed', sans-serif;
-}
-
 a:hover {
     background-color: #1b1b1b;
     color: rgba(199, 246, 250);
