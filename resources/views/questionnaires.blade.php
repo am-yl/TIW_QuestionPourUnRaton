@@ -34,10 +34,7 @@
                                         <a href="{{route('questionnaires.delete',$questionnaire->id)}}"><img  class="supp" src="{{URL::asset('/img/btn_supp.png')}}" alt=""></a>
                                     </td>
                                 </tr>
-                                @endforeach
-                            @endif
-                            </tbody>
-                        </table>
+                            @endforeach
                         @else
                         <p>Vous n'avez pas de questionnaires</p>
                         @endif
@@ -61,10 +58,13 @@
                             Non Applicable
                             @endif
                         </p>
-                        @if (isset(Auth::user()->questionnaires->where('id', '=', $questionnaire->id)->resultat))
-                            Fait !
-                        @else
-                            <a href="{{ route('questionnaires.show', $questionnaire->id) }}">Répondre au questionnaire</a>
+                        <p>
+                            @if (isset(Auth::user()->questionnaires->where('id', '=', $questionnaire->id)->resultat))
+                                Fait !
+                            @else
+                                <a href="{{ route('questionnaires.show', $questionnaire->id) }}">Répondre au questionnaire</a>
+                            @endif
+                        </p>
                     </div>
                 @endforeach
             @endif
@@ -75,5 +75,4 @@
     @else
         <span>error :)</span>
     @endif
-
 </x-app-layout>
