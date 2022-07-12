@@ -29,11 +29,10 @@ h1 {
     font-family: 'Bebas Neue', cursive;
     color: #6d6d6d;
     background-color: rgba(199, 246, 250, 0.7);
-    padding: 9px 11px 6px 11px;
+    padding: 9px 25px 6px;
     border-radius: 30px;
     border: 2px solid #c7f6fa;
     font-size: 3em;
-    position: relative;
 }
 
 .btnWelcome {
@@ -50,8 +49,6 @@ h1 {
 .logo {
     width: 150px;
     margin:auto;
-    position: relative;
-    display: block;
 }
 
 .formWelcome {
