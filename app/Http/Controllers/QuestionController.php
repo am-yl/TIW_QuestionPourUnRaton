@@ -93,7 +93,7 @@ class QuestionController extends Controller
                 // reponse = une réponse du questionnaire
                 // on compare les deux pour compter les points
                 if($bool) {$goodReps += 1;}
-                $e_rep = $question->id.'-'.str_replace(' ', '_', $reponse);
+                $e_rep = $question->id.'-'.str_replace(' ', '', $reponse);
                 if($bool && $request->$e_rep == "on")  {
                     $note += 1;
                 } else if (!$bool && $request->$e_rep == "on") {
