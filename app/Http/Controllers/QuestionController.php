@@ -107,7 +107,7 @@ class QuestionController extends Controller
         $resultat = $resultat/count($questionnaire->questions);
         Auth::user()->questionnaires()->updateExistingPivot($questionnaire->id, ['resultat' => $resultat]);
         return redirect()
-            ->action([QuestionnaireController::class, 'show'], ['id' => $questionnaire->id]);
+            ->action([QuestionnaireController::class, 'index']);
     }
 
     /**
