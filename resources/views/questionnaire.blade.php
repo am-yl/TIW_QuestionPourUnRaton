@@ -93,8 +93,8 @@
                 <?php $reponses = json_decode($eleve_question->reponses,true);?>
                 @if(isset($reponses))
                     @foreach($reponses as $key => $value)
-                    <input type="checkbox" name="{{$eleve_question->id}}-{{str_replace(' ', '', $key)}}">
-                    <label for="{{$eleve_question->id}}-{{str_replace(' ', '', $key)}}">{{$key}}</label>
+                    <input type="checkbox" name="{{$eleve_question->id}}-{{str_replace(' ', '_', $key)}}">
+                    <label for="{{$eleve_question->id}}-{{str_replace(' ', '_', $key)}}">{{$key}}</label>
                     @endforeach
                 @endif
             @endforeach
