@@ -31,7 +31,7 @@
                                     </td>
                                     <td class="p-2 mb-2 text-center flex items-center justify-center">
                                         <a href="{{ route('questionnaires.show',$questionnaire->id) }}"><img class="voir" src="{{asset('/img/btn_voir.png')}}" alt=""></a>
-                                        <a href="{{route('questionnaires.delete',$questionnaire->id)}}"><img class="supp" src="{{asset('/img/btn_supp.png')}}" alt=""></a>
+                                        <a href="{{ route('questionnaires.delete',$questionnaire->id) }}"><img class="supp" src="{{asset('/img/btn_supp.png')}}" alt=""></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -52,14 +52,14 @@
                         <h4>{{ $questionnaire->name }}</h4>
                         <p>{{ $questionnaire->description}}<br/>{{count($questionnaire->questions)}} questions</p>
                         <p>Note :
-                            @if (isset(Auth::user()->questionnaires->where('id', '=', $questionnaire->id)->resultat))
-                            {{ Auth::user()->questionnaires->where('id', '=', $questionnaire->id)->resultat }}/20
+                            @if (Auth::user()->questionnaires->where('id', '=', $questionnaire->id)->first()->pivot->resultat != null)
+                            {{ Auth::user()->questionnaires->where('id', '=', $questionnaire->id)->first()->pivot->resultat*20 }}/20
                             @else
                             Non Applicable
                             @endif
                         </p>
                         <p>
-                            @if (isset(Auth::user()->questionnaires->where('id', '=', $questionnaire->id)->resultat))
+                            @if (Auth::user()->questionnaires->where('id', '=', $questionnaire->id)->first()->pivot->resultat != null)
                                 Fait !
                             @else
                                 <a href="{{ route('questionnaires.show', $questionnaire->id) }}">Répondre au questionnaire</a>

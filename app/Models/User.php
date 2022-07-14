@@ -52,6 +52,6 @@ class User extends Authenticatable
     }
 
     public function questionnaires() {
-        return $this->belongsToMany(Questionnaire::class);
+        return $this->belongsToMany(Questionnaire::class)->withPivot('resultat');
     }
 }

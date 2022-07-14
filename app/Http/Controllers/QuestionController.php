@@ -103,10 +103,11 @@ class QuestionController extends Controller
                 $note = 0;
             }
             $resultat += $note/count($reponses);
-            var_dump($note);
         }
         $resultat = $resultat/count($questionnaire->questions);
-        var_dump($resultat*20);
+        Auth::user()->questionnaires()->updateExistingPivot($questionnaire->id, ['resultat' => $resultat]);
+        return redirect()
+            ->action([QuestionnaireController::class, 'show'], ['id' => $questionnaire->id]);
     }
 
     /**
