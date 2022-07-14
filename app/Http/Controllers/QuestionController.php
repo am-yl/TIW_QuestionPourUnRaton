@@ -5,7 +5,6 @@ use App\Models\Questionnaire;
 use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 class QuestionController extends Controller
 {
 
@@ -87,12 +86,14 @@ class QuestionController extends Controller
         $resultat = 0;
         foreach($questionnaire->questions as $question) {
             $note = 0;
+            $goodReps = 0;
             $reponses = json_decode($question->reponses,true);
             foreach($reponses as $reponse => $bool) {
                 // e_rep = une réponse d'un élève
                 // reponse = une réponse du questionnaire
                 // on compare les deux pour compter les points
-                $e_rep = $question->id.'-'.$reponse;
+                if($bool) {$goodReps += 1;}
+                $e_rep = $question->id.'-'.str_replace(' ', '', $reponse);
                 if($bool && $request->$e_rep == "on")  {
                     $note += 1;
                 } else if (!$bool && $request->$e_rep == "on") {
@@ -102,7 +103,7 @@ class QuestionController extends Controller
             if($note < 0) {
                 $note = 0;
             }
-            $resultat += $note/count($reponses);
+            $resultat += $note/$goodReps;
         }
         $resultat = $resultat/count($questionnaire->questions);
         Auth::user()->questionnaires()->updateExistingPivot($questionnaire->id, ['resultat' => $resultat]);
