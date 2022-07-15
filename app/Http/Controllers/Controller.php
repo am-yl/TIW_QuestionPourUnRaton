@@ -16,11 +16,14 @@ class Controller extends BaseController
 {
     public function index() {
 
+        $user = User::find(Auth::user()->id);
         switch (Auth::user()->role_id) {
             case 1 :
             case 2 :
             case 3 :
-                return view('dashboard');
+                return view('dashboard', [
+                    'user' => $user,
+                ]);
                 break;
             case 4 :
                 $users = User::All();
@@ -28,6 +31,7 @@ class Controller extends BaseController
                 $groupes = Groupe::All();
 
                 return view('dashboard', [
+                    'user' => $user,
                     'users' => $users,
                     'questionnaires' => $questionnaires,
                     'groupes' => $groupes,
