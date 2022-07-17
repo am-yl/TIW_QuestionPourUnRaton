@@ -5,7 +5,6 @@ use App\Models\Questionnaire;
 use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 class QuestionController extends Controller
 {
 
@@ -67,12 +66,49 @@ class QuestionController extends Controller
                 }
             }
             if ($bonneRep > 0 && $nbRep > 1) {
+                $question->name = $request->name;
                 $question->reponses = json_encode($reps);
                 $question->save();
             }
         }
         return redirect()
             ->action([QuestionnaireController::class, 'show'], ['id' => $question->questionnaire_id]);
+    }
+
+    /**
+     * Check the answers to the test
+     *
+     * @param int $id
+     * @param  \Illuminate\Http\Request  $request
+     */
+    public function answer(Request $request, $id) {
+        $questionnaire = Questionnaire::find($id);
+        $resultat = 0;
+        foreach($questionnaire->questions as $question) {
+            $note = 0;
+            $goodReps = 0;
+            $reponses = json_decode($question->reponses,true);
+            foreach($reponses as $reponse => $bool) {
+                // e_rep = une réponse d'un élève
+                // reponse = une réponse du questionnaire
+                // on compare les deux pour compter les points
+                if($bool) {$goodReps += 1;}
+                $e_rep = $question->id.'-'.str_replace(' ', '_', $reponse);
+                if($bool && $request->$e_rep == "on")  {
+                    $note += 1;
+                } else if (!$bool && $request->$e_rep == "on") {
+                    $note -= 1;
+                }
+            }
+            if($note < 0) {
+                $note = 0;
+            }
+            $resultat += $note/$goodReps;
+        }
+        $resultat = $resultat/count($questionnaire->questions);
+        Auth::user()->questionnaires()->updateExistingPivot($questionnaire->id, ['resultat' => $resultat]);
+        return redirect()
+            ->action([QuestionnaireController::class, 'index']);
     }
 
     /**
@@ -93,4 +129,7 @@ class QuestionController extends Controller
         return redirect()
             ->action([QuestionnaireController::class, 'show'], ['id' => $q_id]);
     }
+
 }
+
+

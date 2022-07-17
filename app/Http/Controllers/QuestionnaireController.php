@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Questionnaire;
 use App\Models\Question;
 use App\Models\Groupe;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,15 +17,15 @@ class QuestionnaireController extends Controller
      */
     public function index()
     {
-        // var_dump(Auth::user()->questionnaires);
+        $user = User::find(Auth::user()->id);
         $questionnaires = false;
-        switch (Auth::user()->role_id) {
+        switch ($user->role_id) {
             case 1 :
                 return redirect('dashboard');
                 break;
             case 2 :
             case 3 :
-                $questionnaires = Auth::user()->questionnaires;
+                $questionnaires = $user->questionnaires;
                 break;
             case 4 :
                 $questionnaires = Questionnaire::All();
@@ -32,6 +33,7 @@ class QuestionnaireController extends Controller
         }
 
         return view('questionnaires', [
+            'user' => $user,
             'questionnaires' => $questionnaires,
         ]);
     }
@@ -80,15 +82,18 @@ class QuestionnaireController extends Controller
      */
     public function show($id, $question_id = 0)
     {
+        $user = User::find(Auth::user()->id);
         $questionnaire = Questionnaire::find($id);
         $question = Question::find($question_id);
         if (isset($question)) {
             return view('questionnaire', [
+                'user' => $user,
                 'questionnaire' => $questionnaire,
                 'question' => $question,
             ]);
         }
         return view('questionnaire', [
+            'user' => $user,
             'questionnaire' => $questionnaire,
         ]);
     }

@@ -14,6 +14,6 @@ class Groupe extends Model
     }
 
     public function questionnaires() {
-        return $this->belongsToMany(Questionnaire::class);
+        return $this->belongsToMany(Questionnaire::class)->withPivot('resultat');
     }
 }

@@ -14,10 +14,10 @@ class Questionnaire extends Model
     }
 
     public function groupes() {
-        return $this->belongsToMany(Groupe::class);
+        return $this->belongsToMany(Groupe::class)->withPivot('resultat');
     }
 
     public function users() {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withPivot('resultat');
     }
 }
