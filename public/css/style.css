@@ -39,6 +39,8 @@ h1 {
 
 input,
 input[type=text],
+input[type=email],
+input[type=password],
 select {
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 1em;
@@ -58,12 +60,6 @@ select {
 a {
     font-family: 'Bebas Neue', cursive;
     color: #6d6d6d;
-}
-
-a:hover {
-    background-color: #1b1b1b;
-    color: rgba(199, 246, 250);
-    transition: 0.5s;
 }
 
 p {
@@ -179,8 +175,14 @@ td:last-child, th:last-child {
     border-right:none;
 }
 
-.voir, .supp {
+.voir,
+.supp {
     width: 40px;
+}
+
+.voir:hover,
+.supp:hover {
+    background-color: none;
 }
 
 /************************************************** [ VOIR UN QUESTIONNAIRE/GROUPE/UTILISATEUR] ****/
@@ -192,6 +194,7 @@ td:last-child, th:last-child {
 /****************************** [VOIR SES QUESTIONNAIRES EN TANT QU ELEVE] */
 
 .blocknote{
+    width: 265px;
     background: #FAF8C7;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;

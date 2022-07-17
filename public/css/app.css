@@ -700,6 +700,9 @@ select {
 .mt-10 {
   margin-top: 2.5rem;
 }
+.mt-20 {
+  margin-top: 5rem;
+}
 .block {
   display: block;
 }
@@ -954,6 +957,9 @@ select {
 }
 .p-6 {
   padding: 1.5rem;
+}
+.p-5 {
+  padding: 1.25rem;
 }
 .px-4 {
   padding-left: 1rem;
@@ -1258,6 +1264,10 @@ select {
 .hover\:text-gray-800:hover {
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
+}
+.hover\:text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 .focus\:z-10:focus {
   z-index: 10;

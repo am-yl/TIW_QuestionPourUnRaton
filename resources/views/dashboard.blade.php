@@ -30,14 +30,14 @@
     @elseif($user->role_id == 3)
     <div class="gestion my-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
         <h2 class="titre">Bienvenue {{$user->name}} !</h2>
-        <a href="{{route('questionnaires.index')}}">Accéder à mes questionnaires</a>
-        <a href="{{route('groupes.show', $user->groupe->id)}}">Voir mon groupe</a>
+        <a class="btnNav" href="{{route('questionnaires.index')}}">Accéder à mes questionnaires</a>
+        <a class="btnNav" href="{{route('groupes.show', $user->groupe->id)}}">Voir mon groupe</a>
 
     {{-- Si l'utilisateur est un élève--}}
     @elseif($user->role_id == 2)
     <div class="gestion my-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
         <h2 class="titre block">Bienvenue {{$user->name}} !</h2>
-        <a href="{{route('questionnaires.index')}}">Accéder à mes questionnaires</a>
+        <a class="btnNav" href="{{route('questionnaires.index')}}">Accéder à mes questionnaires</a>
 
     {{-- Si l'utilisateur n'a pas de rôle assigné--}}
     @elseif($user->role_id == 1)
