@@ -1,12 +1,13 @@
 <x-app-layout>
     <div class="gestion my-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <h2 class="titre">Ajouter un groupe</h2>
         <a class="btnNav" href="{{ route('groupes.index') }}">&larr; Retour à la liste des groupes</a>
         @if(isset($groupe))
-        <form action="{{ route('groupes.update', $groupe->id) }}" method="post">
+            <h2 class="titre">Modifier un groupe</h2>
+            <form action="{{ route('groupes.update', $groupe->id) }}" method="post">
         @method('put')
         @else
-        <form action="{{ route('groupes.store') }}" method="post">
+            <h2 class="titre">Ajouter un groupe</h2>
+            <form action="{{ route('groupes.store') }}" method="post">
         @endif
         @csrf
 

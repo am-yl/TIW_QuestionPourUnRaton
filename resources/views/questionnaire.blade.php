@@ -3,9 +3,9 @@
         {{-- Prof ou Admin --}}
         @if($user->role_id == 3 || $user->role_id == 4)
             <a class="btnNav" href="{{ route('questionnaires.index') }}">&larr; Retour à la liste des questionnaires</a>
-            <p>{{ $questionnaire->name }}</p>
-            <p class="mb-2">{{ $questionnaire->description }}</p>
-            <a href="{{ route('questionnaires.edit', $questionnaire->id)}}"  class="mb-2">Modifier le questionnaire</a>
+            <h2 class="titre">{{ $questionnaire->name }}</h2>
+            <p class="desc">{{ $questionnaire->description }}</p>
+            <a href="{{ route('questionnaires.edit', $questionnaire->id)}}" class="btnNav">Modifier le questionnaire</a>
             <hr class="mb-2">
 
             {{-- formulaire pour add une question dans le questionnaire --}}
@@ -25,14 +25,18 @@
 
                 @if(isset($question) && isset($reps))
                     @foreach($reps as $key => $value)
-                    <input type="text" name="rep[]" value="{{ $key }}">
-                    <input type="checkbox" name="val[]" @if($value) checked @endif>
+                    <div class="flex flex-row items-center justify-center mt-2">
+                        <input class="mr-2" type="text" name="rep[]" value="{{ $key }}">
+                        <input type="checkbox" name="val[]" @if($value) checked @endif>
+                    </div>
                     @endforeach
                 @endif
                 <?php $reste = 4; if(isset($reps)) { $reste = 4-(count($reps)); } ?>
                 @for($i=0; $i < $reste; $i++)
-                    <input type="text" name="rep[]">
+                <div class="flex flex-row items-center justify-center mt-2">
+                    <input class="mr-2" type="text" name="rep[]">
                     <input type="checkbox" name="val[]">
+                </div>
                 @endfor
 
                 <input type="hidden" name="questionnaire_id" value="{{ $questionnaire->id }}">
@@ -58,21 +62,21 @@
                 <tbody>
                     @foreach($questionnaire->questions as $q_question)
                     <tr>
-                        <td class="p-2 mb-2">{{$q_question->name}}</td>
+                        <td class="px-4 mb-2">{{$q_question->name}}</td>
                         <?php $reps = json_decode($q_question->reponses,true);?>
-                        <td class="p-2 mb-2">
+                        <td class="px-4 mb-2">
                         @foreach ($reps as $keys => $values)
                             {{ $keys }} ;
                         @endforeach
                         </td>
-                        <td class="p-2 mb-2">
+                        <td class="px-4 mb-2">
                         @foreach ($reps as $keys => $values)
                             @if($values)
                             {{ $keys }}
                             @endif
                         @endforeach
                         </td>
-                        <td class="p-2 mb-2 text-center flex items-center justify-center">
+                        <td class="px-4 mb-2 text-center flex items-center justify-center">
                             <a href="{{ route('questionnaires.showedit',[$q_question->questionnaire_id, $q_question->id]) }}"><img class="voir" src="{{asset('/img/btn_voir.png')}}" alt=""></a>
                             <a href="{{route('questions.delete',[$q_question->questionnaire_id, $q_question->id])}}"><img class="supp" src="{{asset('/img/btn_supp.png')}}" alt=""></a>
                         </td>

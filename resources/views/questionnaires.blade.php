@@ -20,11 +20,11 @@
                         @if(count($questionnaires) > 0)
                             @foreach ($questionnaires as $questionnaire)
                                 <tr>
-                                    <td class="p-2 mb-2 text-center">{{ $questionnaire->id }}</td>
-                                    <td class="p-2 mb-2 text-center">{{ $questionnaire->name }}</td>
-                                    <td class="p-2 mb-2 text-center">{{ $questionnaire->description }}</td>
-                                    <td class="p-2 mb-2 text-center">{{ count($questionnaire->questions) }}</td>
-                                    <td class="p-2 mb-2 text-center">
+                                    <td class="px-4 mb-2 text-center">{{ $questionnaire->id }}</td>
+                                    <td class="px-4 mb-2 text-center">{{ $questionnaire->name }}</td>
+                                    <td class="px-4 mb-2 text-center">{{ $questionnaire->description }}</td>
+                                    <td class="px-4 mb-2 text-center">{{ count($questionnaire->questions) }}</td>
+                                    <td class="px-4 mb-2 text-center">
                                         @foreach ($questionnaire->groupes as $q_groupe)
                                         {{ $q_groupe->name }} ;
                                         @endforeach
