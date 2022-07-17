@@ -139,7 +139,6 @@ class GroupeController extends Controller
         $groupe = Groupe::find($id);
         if(isset($groupe)) {
             $groupe->questionnaires()->detach();
-            $groupe->users()->delete();
             $groupe->delete();
         }
         return redirect('groupes');
