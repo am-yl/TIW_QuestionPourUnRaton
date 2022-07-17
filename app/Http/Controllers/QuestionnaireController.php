@@ -82,15 +82,18 @@ class QuestionnaireController extends Controller
      */
     public function show($id, $question_id = 0)
     {
+        $user = User::find(Auth::user()->id);
         $questionnaire = Questionnaire::find($id);
         $question = Question::find($question_id);
         if (isset($question)) {
             return view('questionnaire', [
+                'user' => $user,
                 'questionnaire' => $questionnaire,
                 'question' => $question,
             ]);
         }
         return view('questionnaire', [
+            'user' => $user,
             'questionnaire' => $questionnaire,
         ]);
     }

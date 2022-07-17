@@ -49,7 +49,7 @@
             @if(count($questionnaires) > 0)
             <section class="w-full flex justify-center flex-wrap items-start">
                 @foreach ($questionnaires as $questionnaire)
-                <div class="blocknote m-5">
+                <div class="blocknote m-3">
                     <h3 class="title">{{ $questionnaire->name }}</h3>
                     <ul class="task">
                         <li>{{ $questionnaire->description}}</li>

@@ -1,14 +1,14 @@
 <x-app-layout>
     <div class="gestion my-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <!-- Prof ou Admin -->
-        @if(Auth::user()->role_id == 3 || Auth::user()->role_id == 4)
+        {{-- Prof ou Admin --}}
+        @if($user->role_id == 3 || $user->role_id == 4)
             <a class="btnNav" href="{{ route('questionnaires.index') }}">&larr; Retour à la liste des questionnaires</a>
             <p>{{ $questionnaire->name }}</p>
             <p class="mb-2">{{ $questionnaire->description }}</p>
             <a href="{{ route('questionnaires.edit', $questionnaire->id)}}"  class="mb-2">Modifier le questionnaire</a>
             <hr class="mb-2">
 
-            <!-- formulaire pour add une question dans le questionnaire -->
+            {{-- formulaire pour add une question dans le questionnaire --}}
             @if(isset($question))
                 <form action="{{ route('questions.update', $question->id) }}" method="post">
                     @method('put')
@@ -46,7 +46,7 @@
             </form>
 
 
-            <!-- on affiche les questions & réponses que si il y en a -->
+            {{-- on affiche les questions & réponses que si il y en a --}}
             @if(count($questionnaire->questions) > 0)
             <table>
                 <thead>
@@ -81,26 +81,30 @@
                 </tbody>
             </table>
             @endif
-        <!-- Eleve -->
-        @elseif(Auth::user()->role_id == 2)
+        {{-- Eleve --}}
+        @elseif($user->role_id == 2)
         <form action="{{ route('questions.answer', $questionnaire->id) }}" method="post">
             @csrf
 
             @foreach($questionnaire->questions as $eleve_question)
-
-                <h3>{{ $eleve_question->name }}</h3>
+            <div class="my-2 flex flex-col">
+                <h3 class="font-bold italic">{{ $eleve_question->name }}</h3>
 
                 <?php $reponses = json_decode($eleve_question->reponses,true);?>
                 @if(isset($reponses))
-                    @foreach($reponses as $key => $value)
+                @foreach($reponses as $key => $value)
+                <div>
+
                     <input type="checkbox" name="{{$eleve_question->id}}-{{str_replace(' ', '_', $key)}}">
                     <label for="{{$eleve_question->id}}-{{str_replace(' ', '_', $key)}}">{{$key}}</label>
-                    @endforeach
+                </div>
+                @endforeach
                 @endif
+            </div>
             @endforeach
-            <button type="submit">Valider</button>
+            <button class="btnNav block" type="submit">Valider</button>
         </form>
-        <!-- Nouvel utilisateur (ne devrait pas être là) -->
+        {{-- Nouvel utilisateur (ne devrait pas être là) --}}
         @else
         <span>error :)</span>
         @endif
