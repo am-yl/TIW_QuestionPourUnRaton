@@ -16,10 +16,15 @@ class GroupeController extends Controller
      */
     public function index()
     {
-        $groupes = Groupe::All();
-        return view('groupes', [
-            'groupes' => $groupes,
-        ]);
+        if(Auth::user()->role_id < 3) {
+            return redirect()
+            ->action([Controller::class, 'index']);
+        } else {
+            $groupes = Groupe::All();
+            return view('groupes', [
+                'groupes' => $groupes,
+            ]);
+        }
     }
 
     /**
@@ -29,10 +34,15 @@ class GroupeController extends Controller
      */
     public function create()
     {
-        $questionnaires = Questionnaire::All();
-        return view('groupeform', [
-            'questionnaires' => $questionnaires,
-        ]);
+        if(Auth::user()->role_id < 3) {
+            return redirect()
+            ->action([Controller::class, 'index']);
+        } else {
+            $questionnaires = Questionnaire::All();
+            return view('groupeform', [
+                'questionnaires' => $questionnaires,
+            ]);
+        }
     }
 
     /**
@@ -66,12 +76,17 @@ class GroupeController extends Controller
      */
     public function show($id)
     {
-        $eleves = User::All()->where('role_id','2')->where('groupe_id', '1');
-        $groupe = Groupe::find($id);
-        return view('groupe', [
-            'groupe' => $groupe,
-            'eleves' => $eleves,
-        ]);
+        if(Auth::user()->role_id < 3) {
+            return redirect()
+            ->action([Controller::class, 'index']);
+        } else {
+            $eleves = User::All()->where('role_id','2')->where('groupe_id', '1');
+            $groupe = Groupe::find($id);
+            return view('groupe', [
+                'groupe' => $groupe,
+                'eleves' => $eleves,
+            ]);
+        }
     }
 
     /**
@@ -82,19 +97,24 @@ class GroupeController extends Controller
      */
     public function edit($id)
     {
-        $groupe = Groupe::find($id);
-        $questionnaires = Questionnaire::All();
-        if(isset($groupe)) {
-            return view('groupeform', [
-                'groupe' => $groupe,
-                'questionnaires' => $questionnaires,
-            ]);
+        if(Auth::user()->role_id < 3) {
+            return redirect()
+            ->action([Controller::class, 'index']);
         } else {
-            $eleves = User::All()->where('role_id','2')->where('groupe_id', '1');
-            return view('groupe', [
-                'groupe' => $groupe,
-                'eleves' => $eleves,
-            ]);
+            $groupe = Groupe::find($id);
+            $questionnaires = Questionnaire::All();
+            if(isset($groupe)) {
+                return view('groupeform', [
+                    'groupe' => $groupe,
+                    'questionnaires' => $questionnaires,
+                ]);
+            } else {
+                $eleves = User::All()->where('role_id','2')->where('groupe_id', '1');
+                return view('groupe', [
+                    'groupe' => $groupe,
+                    'eleves' => $eleves,
+                ]);
+            }
         }
     }
 
@@ -136,11 +156,16 @@ class GroupeController extends Controller
      */
     public function destroy($id)
     {
-        $groupe = Groupe::find($id);
-        if(isset($groupe)) {
-            $groupe->questionnaires()->detach();
-            $groupe->delete();
+        if(Auth::user()->role_id < 3) {
+            return redirect()
+            ->action([Controller::class, 'index']);
+        } else {
+            $groupe = Groupe::find($id);
+            if(isset($groupe)) {
+                $groupe->questionnaires()->detach();
+                $groupe->delete();
+            }
+            return redirect('groupes');
         }
-        return redirect('groupes');
     }
 }
