@@ -1,5 +1,6 @@
 <x-app-layout>
     <div class="gestion my-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <h2 class="titre">Ajouter un questionnaire</h2>
         <a class="btnNav" href="{{ route('questionnaires.index') }}">&larr; Retour à la liste des questionnaires</a>
         @if (isset($questionnaire))
             <p>Ajout des questions uniquement dans les questionnaires</p>
@@ -23,7 +24,7 @@
             @endif
             <!-- select pour choisir les groupes du questionnaires -->
             <label for="groupe_id">Choisissez les groupes</label>
-            <select name="groupe_id[]" id="groupe_id" multiple>
+            <select class="block" name="groupe_id[]" id="groupe_id" multiple>
                 @foreach($groupes as $groupe)
                 <option value="{{ $groupe->id }}">{{ $groupe->name }}</option>
                 @endforeach
@@ -34,7 +35,7 @@
                     <span>{{ $q_groupe->name }}</span>
                 @endforeach
             @endif
-            <button type="submit" class="submit">Enregistrer</button>
+            <button type="submit" class="btnNav submit">Enregistrer</button>
         </form>
     </div>
 </x-app-layout>

@@ -32,7 +32,7 @@
                     @endif
                 @endforeach
             </select>
-            <button type="submit">Enregistrer</button>
+            <button type="submit" class="btnNav submit">Enregistrer</button>
         </form>
     </div>
 </x-app-layout>

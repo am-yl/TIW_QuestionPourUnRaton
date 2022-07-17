@@ -36,7 +36,7 @@
                 @endfor
 
                 <input type="hidden" name="questionnaire_id" value="{{ $questionnaire->id }}">
-                <button type="submit">
+                <button type="submit" class="btnNav submit">
                     @if(isset($question))
                         Modifier
                     @else
