@@ -159,7 +159,7 @@ h1 {
     font-family: 'Roboto Condensed', sans-serif;
     color: #6d6d6d;
     font-size: 3em;
-    align-items: center;
+    display: flex;
     justify-content: center;
 }
 
@@ -183,6 +183,29 @@ td:last-child, th:last-child {
 
 .voir , .supp {
     width: 40px;
+}
+
+/****************************** [VOIR SES QUESTIONNAIRES EN TANT QU ELEVE] */
+
+.blocknote{
+    background: #FAF8C7;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+
+.title {
+    text-align: center;
+    padding:10px 0;
+}
+
+.task{
+    list-style-type: square;
+    padding: 0px 20px 10px;
+}
+
+.task li{
+    list-style-type: none;
+    padding: 5px 0;
 }
 
 
@@ -229,8 +252,6 @@ button:hover {
 #description, #name {
     margin-bottom: 15px;
 }
-
-
 
 
 

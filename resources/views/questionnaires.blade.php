@@ -1,5 +1,5 @@
 <x-app-layout>
-    <!-- Prof ou Admin -->
+    {{-- prof ou admin --}}
     @if(Auth::user()->role_id == 3 || Auth::user()->role_id == 4)
         <div class="gestion my-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
             <h2 class="titre">Gérer vos quizz</h2>
@@ -43,35 +43,39 @@
             @endif
         </div>
 
-    <!-- Eleve -->
+    {{-- Eleve --}}
     @elseif(Auth::user()->role_id == 2)
         @if($questionnaires != false)
             @if(count($questionnaires) > 0)
+            <section class="w-full flex justify-center flex-wrap items-start">
                 @foreach ($questionnaires as $questionnaire)
-                    <div>
-                        <h4>{{ $questionnaire->name }}</h4>
-                        <p>{{ $questionnaire->description}}<br/>{{count($questionnaire->questions)}} questions</p>
-                        <p>Note :
+                <div class="blocknote m-5">
+                    <h3 class="title">{{ $questionnaire->name }}</h3>
+                    <ul class="task">
+                        <li>{{ $questionnaire->description}}<br/>{{count($questionnaire->questions)}} questions</li>
+                        <li>Note :
                             @if (Auth::user()->questionnaires->where('id', '=', $questionnaire->id)->first()->pivot->resultat != null)
                             {{ Auth::user()->questionnaires->where('id', '=', $questionnaire->id)->first()->pivot->resultat*20 }}/20
                             @else
                             Non Applicable
                             @endif
-                        </p>
-                        <p>
+                        </li>
+                        <li>
                             @if (Auth::user()->questionnaires->where('id', '=', $questionnaire->id)->first()->pivot->resultat != null)
-                                Fait !
+                            Fait !
                             @else
-                                <a href="{{ route('questionnaires.show', $questionnaire->id) }}">Répondre au questionnaire</a>
+                            <a class="btnNav" href="{{ route('questionnaires.show', $questionnaire->id) }}">Répondre au questionnaire</a>
                             @endif
-                        </p>
-                    </div>
+                        </li>
+                    </ul>
+                </div>
                 @endforeach
+            </section>
             @endif
         @else
         <p>Vous n'avez pas de questionnaires</p>
         @endif
-    <!-- Nouvel utilisateur (ne devrait pas être là) -->
+    {{-- Nouvel utilisateur (ne devrait pas être là) --}}
     @else
         <span>error :)</span>
     @endif
