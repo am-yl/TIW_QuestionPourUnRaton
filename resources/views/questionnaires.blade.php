@@ -20,11 +20,11 @@
                         @if(count($questionnaires) > 0)
                             @foreach ($questionnaires as $questionnaire)
                                 <tr>
-                                    <td class="p-2 mb-2 text-center">{{ $questionnaire->id }}</td>
-                                    <td class="p-2 mb-2 text-center">{{ $questionnaire->name }}</td>
-                                    <td class="p-2 mb-2 text-center">{{ $questionnaire->description }}</td>
-                                    <td class="p-2 mb-2 text-center">{{ count($questionnaire->questions) }}</td>
-                                    <td class="p-2 mb-2 text-center">
+                                    <td class="px-4 mb-2 text-center">{{ $questionnaire->id }}</td>
+                                    <td class="px-4 mb-2 text-center">{{ $questionnaire->name }}</td>
+                                    <td class="px-4 mb-2 text-center">{{ $questionnaire->description }}</td>
+                                    <td class="px-4 mb-2 text-center">{{ count($questionnaire->questions) }}</td>
+                                    <td class="px-4 mb-2 text-center">
                                         @foreach ($questionnaire->groupes as $q_groupe)
                                         {{ $q_groupe->name }} ;
                                         @endforeach
@@ -47,7 +47,7 @@
     @elseif($user->role_id == 2)
         @if($questionnaires != false)
             @if(count($questionnaires) > 0)
-            <section class="w-full flex justify-center flex-wrap items-start">
+            <section class=" mt-20 w-full flex justify-center flex-wrap items-start">
                 @foreach ($questionnaires as $questionnaire)
                 <div class="blocknote m-3">
                     <h3 class="title">{{ $questionnaire->name }}</h3>
@@ -65,7 +65,7 @@
                             @if ($user->questionnaires->where('id', '=', $questionnaire->id)->first()->pivot->resultat != null)
                             Fait !
                             @else
-                            <a class="btnNav" href="{{ route('questionnaires.show', $questionnaire->id) }}">Répondre au questionnaire</a>
+                            <a class="btnNav block m-auto" href="{{ route('questionnaires.show', $questionnaire->id) }}">Répondre au questionnaire</a>
                             @endif
                         </li>
                     </ul>

@@ -4,25 +4,19 @@
     margin: 0;
 }
 
+/*********************************************************** [GENERAL] */
+
 body {
     background-image: url("../img/background.jpg");
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     height:100vh;
-    overflow: hidden;
     font-family: 'Roboto Condensed';
     font-size: 18px;
     color: #6D6D6D;
 }
-
-/************************************************** [NAVIGATION] ****/
-
-.raccoon {
-    width: 100px;
-}
-
-/************************************************** [BIENVE/LOGIN/REGISTER] ****/
 
 h1 {
     font-family: 'Bebas Neue', cursive;
@@ -34,7 +28,80 @@ h1 {
     font-size: 3em;
 }
 
+.titre {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #6d6d6d;
+    font-size: 3em;
+    display: flex;
+    justify-content: center;
+}
 
+input,
+input[type=text],
+input[type=email],
+input[type=password],
+select {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1em;
+    padding: 10px 8px;
+    border-radius: 10px;
+    width: 100%;
+    display: block;
+    background-color: rgba(245, 246, 2246, 0.7);
+    box-shadow: 7px 7px 11px rgb(162, 166, 167);
+    border:none;
+}
+
+::placeholder {
+    color: rgba(143, 141, 141, 0.8);
+}
+
+a {
+    font-family: 'Bebas Neue', cursive;
+    color: #6d6d6d;
+}
+
+p {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #6d6d6d;
+}
+
+.btnNav {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #fff;
+    background-color: #6d6d6d;
+    padding: 5px 15px;
+    margin:10px 0;
+    border-radius: 10px;
+    display:inline-block;
+}
+
+.btnNav:hover  {
+    background-color: #1b1b1b;
+    color: rgba(199, 246, 250);
+    transition: 0.5s;
+}
+
+.submit {
+    margin-top : 15px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.3em;
+    display:block;
+}
+
+.submit:hover {
+    background-color: #1b1b1b;
+    color: rgba(199, 246, 250);
+    transition: 0.5s;
+}
+
+/************************************************** [NAVIGATION] ****/
+
+.raccoon {
+    width: 100px;
+}
+
+/************************************************** [BIENVE/LOGIN/REGISTER] ****/
 
 .btnWelcome {
     background-color: rgba(199, 246, 250, 0.7);
@@ -61,55 +128,17 @@ h1 {
     position: relative;
 }
 
-    .formWelcome label {
-        font-family: 'Bebas Neue', cursive;
-        color: #6d6d6d;
-        font-size: 1.7em;
-        padding: 10px 10px;
-    }
+.formWelcome label {
+    font-family: 'Bebas Neue', cursive;
+    color: #6d6d6d;
+    font-size: 1.7em;
+    padding: 10px 10px;
+}
 
-    input {
-        font-family: 'Roboto Condensed', sans-serif;
-        font-size: 1em;
-        padding: 10px 8px;
-        border-radius: 10px;
-        width: 100%;
-        display: block;
-        background-color: rgba(245, 246, 2246, 0.7);
-        box-shadow: 7px 7px 11px rgb(162, 166, 167);
-    }
-
-    ::placeholder {
-        color: rgba(143, 141, 141, 0.8);
-    }
-
-    a {
-        font-family: 'Bebas Neue', cursive;
-        color: #6d6d6d;
-    }
-
-    .submit {
-        font-family: 'Bebas Neue', cursive;
-        background-color: #6d6d6d;
-        color: #f5f5f5;
-        padding: 8px 8px;
-        border-radius: 10px;
-        font-size: 1.3em;
-    }
-
-    .submit:hover {
-        background-color: #1b1b1b;
-        color: rgba(199, 246, 250);
-        transition: 0.5s;
-    }
-
-    .email {
-        padding-bottom: 20px;
-    }
-
-    .password {
-        padding-bottom: 20px;
-    }
+.email,
+.password {
+    padding-bottom: 20px;
+}
 
 
 /************************************************** [GÉRER VOS QUESTIONNAIRES/GROUPES/UTILISATEURS] ****/
@@ -122,44 +151,8 @@ h1 {
     width:75%;
 }
 
-.gestion table {
+table {
     width:100%;
-}
-
-.btnNav {
-    font-family: 'Roboto Condensed', sans-serif;
-    color: #fff;
-    background-color: #6d6d6d;
-    padding: 5px;
-    border-radius: 10px;
-}
-
-.btnNav:hover  {
-    background-color: #1b1b1b;
-    color: rgba(199, 246, 250);
-    transition: 0.5s;
-}
-
-.groupe {
-    font-family: 'Roboto Condensed', sans-serif;
-    color: #fff;
-    background-color: #6d6d6d;
-    padding: 5px;
-    border-radius: 10px;
-}
-
-.groupe:hover {
-    background-color: #1b1b1b;
-    color: rgba(199, 246, 250);
-    transition: 0.5s;
-}
-
-.titre {
-    font-family: 'Roboto Condensed', sans-serif;
-    color: #6d6d6d;
-    font-size: 3em;
-    display: flex;
-    justify-content: center;
 }
 
 th {
@@ -167,26 +160,40 @@ th {
     color: #6d6d6d;
     font-weight: bolder;
     font-size: 20px;
-    border-right: solid 1px #c0bebe;
+    border-right: solid 1px #fffbfb;
 }
 
 td {
     font-family: 'Roboto Condensed', sans-serif;
     color: #6d6d6d;
-    border-right: solid 1px #c0bebe;
+    border-right: solid 1px #fffbfb;
+    padding:0 15px;
 }
 
 td:last-child, th:last-child {
     border-right:none;
 }
 
-.voir , .supp {
+.voir,
+.supp {
     width: 40px;
+}
+
+.voir:hover,
+.supp:hover {
+    background-color: none;
+}
+
+/************************************************** [ VOIR UN QUESTIONNAIRE/GROUPE/UTILISATEUR] ****/
+
+.desc {
+    font-weight: bold;
 }
 
 /****************************** [VOIR SES QUESTIONNAIRES EN TANT QU ELEVE] */
 
 .blocknote{
+    width: 265px;
     background: #FAF8C7;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
@@ -211,7 +218,7 @@ td:last-child, th:last-child {
 }
 
 
-    /************************************************** [CRÉER VOS QUESTIONNAIRES] ****/
+/************************************************** [CRÉER VOS QUESTIONNAIRES] ****/
 
 #name , #description {
     font-family: 'Roboto Condensed', sans-serif;
@@ -223,26 +230,6 @@ td:last-child, th:last-child {
     background-color: rgba(245, 246, 2246, 0.7);
     box-shadow: 7px 7px 11px rgb(162, 166, 167);
     border: none;
-}
-
-a:hover {
-    background-color: #1b1b1b;
-    color: rgba(199, 246, 250);
-    transition: 0.5s;
-}
-
-p {
-    font-family: 'Roboto Condensed', sans-serif;
-    color: #6d6d6d;
-}
-
-.enregistrer {
-    background-color: #c9f8cd;
-    color: #6d6d6d;
-    padding: 10px;
-    border-radius: 20px;
-    font-family: 'Bebas Neue', cursive;
-    font-size: 15px;
 }
 
 button:hover {

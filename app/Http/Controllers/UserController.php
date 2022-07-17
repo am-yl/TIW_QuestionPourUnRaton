@@ -17,10 +17,15 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::All();
-        return view('users', [
-            'users' => $users,
-        ]);
+        if(Auth::user()->role_id < 3) {
+            return redirect()
+            ->action([Controller::class, 'index']);
+        } else {
+            $users = User::All();
+            return view('users', [
+                'users' => $users,
+            ]);
+        }
     }
 
     /**
@@ -31,17 +36,22 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        $groupes = Groupe::All();
-        $roles = Role::All();
-        if(isset($user)) {
-            return view('userform', [
-                'user' => $user,
-                'roles' => $roles,
-                'groupes' => $groupes,
-            ]);
+        if(Auth::user()->role_id < 3) {
+            return redirect()
+            ->action([Controller::class, 'index']);
         } else {
-            return view('users');
+            $user = User::find($id);
+            $groupes = Groupe::All();
+            $roles = Role::All();
+            if(isset($user)) {
+                return view('userform', [
+                    'user' => $user,
+                    'roles' => $roles,
+                    'groupes' => $groupes,
+                ]);
+            } else {
+                return view('users');
+            }
         }
     }
 
@@ -54,22 +64,27 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
+        if(Auth::user()->role_id < 3) {
+            return redirect()
+            ->action([Controller::class, 'index']);
+        } else {
+            $user = User::find($id);
 
-        $user->name = $request->name;
-        $user->surname = $request->surname;
-        $user->email = $request->email;
-        $user->role_id = $request->role_id;
-        $user->groupe_id = $request->groupe_id;
-        $user->save();
-        $questionnaires = $user->groupe->questionnaires;
+            $user->name = $request->name;
+            $user->surname = $request->surname;
+            $user->email = $request->email;
+            $user->role_id = $request->role_id;
+            $user->groupe_id = $request->groupe_id;
+            $user->save();
+            $questionnaires = $user->groupe->questionnaires;
 
-        foreach($questionnaires as $questionnaire) {
-            // TO CHECK POUR PAS RESAVE EN BASE :) leuchtrum page 33
-            $set = $user->questionnaires()->where('questionnaire_id', $questionnaire->id)->get();
-            if(count($set) == 0) {
-                $questionnaire = Questionnaire::find($questionnaire->id);
-                $user->questionnaires()->save($questionnaire);
+            foreach($questionnaires as $questionnaire) {
+                // TO CHECK POUR PAS RESAVE EN BASE :) leuchtrum page 33
+                $set = $user->questionnaires()->where('questionnaire_id', $questionnaire->id)->get();
+                if(count($set) == 0) {
+                    $questionnaire = Questionnaire::find($questionnaire->id);
+                    $user->questionnaires()->save($questionnaire);
+                }
             }
         }
 
@@ -86,19 +101,25 @@ class UserController extends Controller
      */
 
     public function ajout_groupe(Request $request, $g_id) {
-        if(isset($request->user_id)) {
-            foreach($request->user_id as $id) {
-                $user = User::find($id);
-                $user->groupe_id = $g_id;
-                $user->save();
-                $questionnaires = $user->groupe->questionnaires;
-                foreach($questionnaires as $questionnaire) {
-                    $user->questionnaires()->save($questionnaire);
+
+        if(Auth::user()->role_id < 3) {
+            return redirect()
+            ->action([Controller::class, 'index']);
+        } else {
+            if(isset($request->user_id)) {
+                foreach($request->user_id as $id) {
+                    $user = User::find($id);
+                    $user->groupe_id = $g_id;
+                    $user->save();
+                    $questionnaires = $user->groupe->questionnaires;
+                    foreach($questionnaires as $questionnaire) {
+                        $user->questionnaires()->save($questionnaire);
+                    }
                 }
             }
+            return redirect()
+                ->action([GroupeController::class, 'show'], ['id' => $g_id]);
         }
-        return redirect()
-            ->action([GroupeController::class, 'show'], ['id' => $g_id]);
     }
 
     /**
@@ -109,11 +130,16 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        if(isset($user)) {
-            $user->questionnaires()->detach();
-            $user->delete();
+        if(Auth::user()->role_id < 3) {
+            return redirect()
+            ->action([Controller::class, 'index']);
+        } else {
+            $user = User::find($id);
+            if(isset($user)) {
+                $user->questionnaires()->detach();
+                $user->delete();
+            }
+            return redirect('users');
         }
-        return redirect('users');
     }
 }

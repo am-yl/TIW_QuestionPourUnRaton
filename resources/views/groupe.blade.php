@@ -1,11 +1,12 @@
 <x-app-layout>
     <div class="gestion my-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
         <a class="btnNav" href="{{ route('groupes.index')}}">&larr; Voir les groupes</a>
-        <h3>titre : {{ $groupe->name }}</h3>
-        <p>desc : {{ $groupe->description }}</p>
-        <a href="{{ route('groupes.edit', $groupe->id) }}">Modifier le groupe</a>
-        <p>Professeur : @foreach($groupe->users->where('role_id', '3') as $prof) {{$prof->name}} {{$prof->surname}} @endforeach</p>
-        <h4>Liste des élèves :</h4>
+        <h2 class="titre">{{ $groupe->name }}</h2>
+        <p class="desc">{{ $groupe->description }}</p>
+        <a class="btnNav" href="{{ route('groupes.edit', $groupe->id) }}">Modifier le groupe</a>
+        <h4 class="desc">Professeur :</h4>
+        <p> @foreach($groupe->users->where('role_id', '3') as $prof) {{$prof->name}} {{$prof->surname}} @endforeach</p>
+        <p class="desc">Liste des élèves :</p>
         <ul>
             @foreach($groupe->users->where('role_id','2') as $g_eleve)
             <li>
