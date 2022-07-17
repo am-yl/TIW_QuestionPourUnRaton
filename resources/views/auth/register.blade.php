@@ -58,7 +58,7 @@
                     {{ __('Déjà enregistré ?') }}
                 </a>
 
-                <x-button class="ml-4 submit">
+                <x-button class="ml-4">
                     {{ __('S\'enregistrer') }}
                 </x-button>
             </div>

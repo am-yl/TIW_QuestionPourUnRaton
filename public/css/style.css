@@ -95,6 +95,12 @@ p {
     transition: 0.5s;
 }
 
+button:hover {
+    background-color: #6d6d6d;
+    color: #c9f8cd;
+    transition: 0.5s;
+}
+
 /************************************************** [NAVIGATION] ****/
 
 .raccoon {
@@ -230,12 +236,6 @@ td:last-child, th:last-child {
     background-color: rgba(245, 246, 2246, 0.7);
     box-shadow: 7px 7px 11px rgb(162, 166, 167);
     border: none;
-}
-
-button:hover {
-    background-color: #6d6d6d;
-    color: #c9f8cd;
-    transition: 0.5s;
 }
 
 #description, #name {
