@@ -24,7 +24,7 @@ class QuestionController extends Controller
         $bonneRep = 0;
         foreach($request->rep as $key => $rep) {
             if($rep != "") {
-                if(isset($request->val[$key])) {
+                if($request->$key == "on") {
                     $reps[$rep] = true;
                     $bonneRep++;
                 } else {
@@ -56,7 +56,7 @@ class QuestionController extends Controller
             $nbRep = 0;
             foreach($request->rep as $key => $rep) {
                 if($rep != "") {
-                    if(isset($request->val[$key])) {
+                    if($request->$key == "on") {
                         $reps[$rep] = true;
                         $bonneRep++;
                     } else {

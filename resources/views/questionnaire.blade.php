@@ -20,22 +20,23 @@
                 <label for="name">Intitulé</label>
                 <input type="text" name="name" id="name" value="@if(isset($question)) {{ $question->name }}  @endif" required>
 
-                <label for="rep[]">Réponses</label>
-                <label for="val[]">(cocher la/les bonne(s) réponse(s))</label>
+                <label for="rep[]">Réponses (cocher la/les bonne(s) réponse(s))</label>
 
                 @if(isset($question) && isset($reps))
+                    <?php $i = 0 ;?>
                     @foreach($reps as $key => $value)
                     <div class="flex flex-row items-center justify-center mt-2">
                         <input class="mr-2" type="text" name="rep[]" value="{{ $key }}">
-                        <input type="checkbox" name="val[]" @if($value) checked @endif>
+                        <input type="checkbox" name="{{$i}}" @if($value) checked @endif>
                     </div>
+                    <?php $i++ ;?>
                     @endforeach
                 @endif
-                <?php $reste = 4; if(isset($reps)) { $reste = 4-(count($reps)); } ?>
-                @for($i=0; $i < $reste; $i++)
+                <?php if(!isset($i)) { $i=0;} ?>
+                @for($i; $i < 4; $i++)
                 <div class="flex flex-row items-center justify-center mt-2">
                     <input class="mr-2" type="text" name="rep[]">
-                    <input type="checkbox" name="val[]">
+                    <input type="checkbox" name="{{$i}}">
                 </div>
                 @endfor
 
